@@ -1,0 +1,38 @@
+{
+	"name": "Incomple-api-projects",
+	"version": "0.0.1",
+	"description": "An FCC Backend Challenge - Incomple_ edition",
+	"main": "server.js",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.0",
+		"ejs": "^2.5.6",
+		"express": "^4.15.2",
+		"jquery": "^3.5.1",
+		"mongodb": "^3.6.2",
+		"mongoose": "^5.10.9",
+		"multer": "^1.4.2",
+		"shortid": "^2.2.15"
+	},
+	"devDependencies": {
+		"got": "^11.3.0",
+		"tape": "^4.7.0"
+	},
+	"engines": {
+		"node": "12.x"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Inc0mple/fcc-boilerplate-project-timestamp.git"
+	},
+	"keywords": [
+		"node",
+		"hyperdev",
+		"express",
+		"freecodecamp"
+	],
+	"license": "MIT"
+}

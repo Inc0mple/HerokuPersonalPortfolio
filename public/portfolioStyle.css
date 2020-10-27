@@ -1,0 +1,174 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  color: white;
+  box-sizing: border-box;
+  font-size: 30px;
+}
+
+html {
+  box-sizing: border-box;
+  /*
+  scroll-behavior: smooth;
+  */
+}
+
+#navbar {
+  display: flex;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.75);
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 80px;
+  justify-content: space-between;
+  z-index: 99;
+}
+
+#nav-logo {
+  height: auto;
+  max-width: 80px;
+}
+
+#nav-list {
+  display: flex;
+  list-style: none;
+  line-height: 2;
+  align-items: center;
+  padding-right: 3vw;
+}
+
+.nav-link {
+  padding: 20px;
+}
+
+.nav-a {
+  text-decoration: none;
+}
+
+#welcome-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #393f4d;
+  background-image: url("https://p1.pxfuel.com/preview/143/1013/65/keyboard-technology-office-internet-desk-typing.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#welcome-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 10px;
+}
+.wtext {
+  color: white;
+}
+.projtext {
+  padding-bottom: 1em;
+  font-size: 1.5rem;
+}
+#projects {
+  background: url("https://p1.pxfuel.com/preview/153/88/871/laptop-computer-business-technology-keyboard-office.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 4em;
+}
+
+.projects-area {
+  display: grid;
+  grid-template-areas: "g1";
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.project-tile {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 1rem;
+  width: 13rem;
+  height: 12.5rem;
+}
+
+.project-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.project-btn {
+  position: relative;
+  bottom: 2em;
+  display: inline-block;
+  background-color: midnightblue;
+  border: none;
+  width: 100%;
+  line-height: 2;
+  font-size: 0.6rem;
+  cursor: pointer;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.project-btn:hover {
+  background-color: blue;
+}
+.project-img:hover {
+  filter: brightness(110%);
+}
+#g1 {
+  grid-area: g1;
+}
+
+#improvement-list {
+  list-style: square;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 3rem;
+  padding-top: 2rem;
+  text-align: left;
+}
+
+.improvement {
+  font-size: 0.8rem;
+  padding: 0.2rem;
+  list-style-type: space-counter;
+  list-style: circle;
+}
+
+#profile {
+  padding-top: 40vh;
+  padding-bottom: 40vh;
+  background-image: url("https://p1.pxfuel.com/preview/412/854/526/laptop-apple-macbook-computer-browser-research.jpg");
+  background-color: rgba(0, 0, 0, 0.75);
+  text-align: center;
+  background-attachment: fixed;
+  background-size: cover;
+  line-height: 2;
+}
+
+#ptext {
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+}
+.contact-img {
+  max-width: 100px;
+  margin: 30px;
+}
+@media (max-width: 500px) {
+  #navbar {
+    justify-content: space-around;
+  }
+}
