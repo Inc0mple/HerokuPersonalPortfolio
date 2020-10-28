@@ -2,22 +2,40 @@ code {
   background: #d0d0d5;
 }
 
-.container {
+body {
+  background-image: url("https://raw.githubusercontent.com/Inc0mple/Logos/master/sudokuBackground.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#title {
+  color:white;
+  text-align: center;
+  background-color: rgba(0,0,0,0.8);
+  border-radius: 10px;
+}
+
+#container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height:100%;
+  background-color: rgba(0,0,0,0.8);
+  border-radius: 10px;  
+  
 }
 
 .form-container {
   max-width: 95%;
+  margin:1rem;
 }
 
 textarea {
+  height: 100%;
   width: 100%;
 }
 
-#user-stories {
-  font-size: 1.2em;
-}
 
 #error-msg {
   color: red;
@@ -26,9 +44,11 @@ textarea {
 }
 
 #sudoku-grid {
-  margin-left: 20px;
+  height: 100%;
+  margin: 1rem;
   text-align: center;
   display: inline;
+  color:white
 }
 
 .grid {
@@ -36,9 +56,15 @@ textarea {
   border-spacing: 0;
 }
 
+.sudoku-input {
+  background-color: rgba(255,255,255,0);
+  color:white;
+}
+
 td {
   border: 1px solid;
   padding: 0.3em;
+
 }
 
 input[type="text"] {
@@ -90,6 +116,28 @@ input[type="text"] {
   border-right: 3px solid;
 }
 
+#loader {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin-top: -120px;
+  margin-left: -70px;
+  animation: spin 2s linear infinite;
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*
 @media (min-width: 800px) {
   .container {
     flex-direction: row;

@@ -9,82 +9,16 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel = "stylesheet"
-      href = sudokuStyle.css />
+    <link rel="stylesheet" href="sudokuStyle.css" />
   </head>
   <body>
     <header>
-      <h1>Quality Assurance 4: Sudoku Solver</h1>
+      <h1 id="title">Sudoku Solver</h1>
     </header>
-    <div id="user-stories">
-      <h3>User Stories</h3>
-      <ol>
-        <li>
-          I can enter a sudoku puzzle by filling in the text area with either a
-          number or period (.) to represent an empty cell.
-        </li>
-        <li>
-          When a valid number is entered in the text area, the same number is
-          applied to the correct cell of the sudoku grid.
-        </li>
-        <li>
-          I can enter a sudoku puzzle by adding numbers directly to the sudoku
-          grid.
-        </li>
-        <li>
-          When a valid number is entered in the sudoku grid, the same number
-          appears in the correct position in the text area.
-        </li>
-        <li>
-          The text area should only update the corresponding sudoku grid cell
-          when a whole number between 1 and 9 is entered.
-        </li>
-        <li>
-          The sudoku grid should only update the puzzle string in the text area
-          when a whole number between 1 and 9 is entered into a cell.
-        </li>
-        <li>
-          I can solve an incomplete puzzle by clicking the "Solve" button. When
-          a solution is found, the sudoku grid and text area are automatically
-          populated with the correct numbers for each cell in the grid or
-          position in the text area.
-        </li>
-        <li>
-          This sudoku solver is not expected to be able to solve every
-          incomplete puzzle. See
-          <code>/public/puzzle-strings.js</code> for a list of puzzle strings it
-          should be able to solve along with their solutions.
-        </li>
-        <li>
-          If the puzzle is not 81 numbers or periods long, append the message
-          "Error: Expected puzzle to be 81 characters long." to the
-          <code>error-msg</code> <code>div</code> so the text appears in red.
-        </li>
-        <li>
-          I can clear the text area and sudoku grid by clicking the "Clear"
-          button.
-        </li>
-        <li>
-          All 6 unit tests are complete and passing. See
-          <code>/tests/1_unit-tests.js</code> for the expected behavior you
-          should write tests for.
-        </li>
-        <li>
-          All 4 functional tests are complete and passing. See
-          <code>/tests/2_functional-tests.js</code> for the functionality you
-          should write tests for.
-        </li>
-      </ol>
-    </div>
+
     <hr style="margin: 25px" />
-    <div class="container">
-      <div class="form-container">
-        <textarea rows="10" cols="85" id="text-input"></textarea>
-        <br />
-        <input type="button" value="Solve" id="solve-button" />
-        <input type="button" value="Clear" id="clear-button" />
-        <div id="error-msg"></div>
-      </div>
+    <div id="loader"></div>
+    <div id="container">
       <div id="sudoku-grid">
         <table class="grid">
           <tbody>
@@ -919,9 +853,16 @@
           </tbody>
         </table>
       </div>
+      <div class="form-container">
+        <textarea rows="10" cols="85" id="text-input"></textarea>
+        <br />
+        <input type="button" value="Solve" id="solve-button" />
+        <input type="button" value="Reset" id="clear-button" />
+        <div id="error-msg"></div>
+      </div>
     </div>
   </body>
-  <script>
+  <script async>
     let textArea = document.getElementById("text-input");
     let solveButton = document.getElementById("solve-button");
     let clearButton = document.getElementById("clear-button");
@@ -929,23 +870,30 @@
     const puzzlesAndSolutions = [
       [
         "1.5..2.84..63.12.7.2..5.....9..1....8.2.3674.3.7.2..9.47...8..1..16....926914.37.",
-        "135762984946381257728459613694517832812936745357824196473298561581673429269145378",
       ],
       [
         "5..91372.3...8.5.9.9.25..8.68.47.23...95..46.7.4.....5.2.......4..8916..85.72...3",
-        "568913724342687519197254386685479231219538467734162895926345178473891652851726943",
       ],
       [
         "..839.7.575.....964..1.......16.29846.9.312.7..754.....62..5.78.8...3.2...492...1",
-        "218396745753284196496157832531672984649831257827549613962415378185763429374928561",
       ],
       [
         ".7.89.....5....3.4.2..4..1.5689..472...6.....1.7.5.63873.1.2.8.6..47.1..2.9.387.6",
-        "473891265851726394926345817568913472342687951197254638734162589685479123219538746",
       ],
       [
         "82..4..6...16..89...98315.749.157.............53..4...96.415..81..7632..3...28.51",
-        "827549163531672894649831527496157382218396475753284916962415738185763249374928651",
+      ],
+      [
+        ".2..........6....3.74.8.........3..2.8..4..1.6..5.........1.78.5....9..........4.",
+      ],
+      [
+        "..3.2.6..9..3.5..1..18.64....81.29..7.......8..67.82....26.95..8..2.3..9..5.1.3..",
+      ],
+      [
+        ".....6....59.....82....8....45........3........6..3.54...325..6..................",
+      ],
+      [
+        "53..7....6..195....98....6.8...6...34..8.3..17...2...6.6....28....419..5....8..79",
       ],
     ];
 
@@ -981,111 +929,158 @@
 
     clearButton.addEventListener("click", () => {
       // Load a simple puzzle into the text area
-      textArea.value = "";
+      textArea.value =
+        ".................................................................................";
       Array.from(sudokuInputs).forEach((ele, idx) => {
         ele.value = "";
       });
+      document.getElementById("error-msg").innerHTML =
+        "<span style='color: white'>Cleared</span>";
     });
 
-    solveButton.addEventListener("click", () => {
-      console.log(textArea.value.length);
-      //console.log(textArea.innerText.length)
+    function solveSudoku() {
+        let sudokuString = textArea.value;
+        let rowsArray = [[], [], [], [], [], [], [], [], []];
+        let columnsArray = [[], [], [], [], [], [], [], [], []];
+        let gridsArray = [[], [], [], [], [], [], [], [], []];
+        let boardState = [];
+
+        sudokuString.split("").forEach((ele, idx) => {
+          let rowIdx = Math.floor(idx / 9);
+          let columnIdx = idx % 9;
+          let gridIdx = (Math.floor(idx / 3) % 3) + Math.floor(idx / 27) * 3;
+
+          rowsArray[rowIdx].push(ele);
+          columnsArray[columnIdx].push(ele);
+          gridsArray[gridIdx].push(ele);
+
+          let pointObj = {
+            index: idx,
+            value: ele,
+            row: rowIdx,
+            column: columnIdx,
+            grid: gridIdx,
+          };
+          boardState.push(pointObj);
+        });
+
+        console.log("Initial boardState", boardState);
+        //check if duplicate in initial boardState:
+        for (let i in boardState) {
+          let pos = boardState[i];
+          //console.log(String(pos.value))
+          let checkIfDuplicate =
+            rowsArray[pos.row].filter((item) =>
+              item == pos.value ? true : false
+            ).length > 1 ||
+            columnsArray[pos.column].filter((item) =>
+              item == pos.value ? true : false
+            ).length > 1 ||
+            gridsArray[pos.grid].filter((item) =>
+              item == pos.value ? true : false
+            ).length > 1;
+          if (boardState[i].value != ".") {
+            if (checkIfDuplicate) {
+              return (document.getElementById("error-msg").innerHTML =
+                "<span style='color: red'>Error: Invalid initial input.</span>");
+            }
+          }
+          //console.log(boardState[i].value)
+        }
+
+        let currentIdx = 0;
+        let lastModifiedIdxArray = [0];
+        let lastModifiedValArray = [1];
+        let backtracked = false;
+
+        while (currentIdx < 81) {
+          let pos = boardState[currentIdx];
+          //let lastUsedNum = 1;
+          if (pos.value == ".") {
+            selectNum: for (var i = 1; i < 11; i++) {
+              if (backtracked) {
+                backtracked = false;
+              }
+              if (i < 10) {
+                let ans = String(i);
+                let checkIfValid =
+                  !rowsArray[pos.row].includes(ans) &&
+                  !columnsArray[pos.column].includes(ans) &&
+                  !gridsArray[pos.grid].includes(ans);
+                if (checkIfValid) {
+                  pos.value = ans;
+                  rowsArray[pos.row][pos.column] = ans;
+                  columnsArray[pos.column][pos.row] = ans;
+                  gridsArray[pos.grid][
+                    (pos.column % 3) + 3 * (pos.row % 3)
+                  ] = ans;
+                  lastModifiedValArray.push(i);
+                  lastModifiedIdxArray.push(currentIdx);
+                  backtracked = false;
+                  break selectNum;
+                }
+              } else {
+                //Handles running out of available nums and needing to backtrack
+                //console.log(`Backtracked from pos ${currentIdx} to pos ${lastModifiedIdxArray[lastModifiedIdxArray.length - 1]}`)
+                backtracked = true;
+                currentIdx =
+                  lastModifiedIdxArray[lastModifiedIdxArray.length - 1];
+                lastModifiedIdxArray.pop();
+                pos = boardState[currentIdx];
+                pos.value = ".";
+                rowsArray[pos.row][pos.column] = ".";
+                columnsArray[pos.column][pos.row] = ".";
+                gridsArray[pos.grid][(pos.column % 3) + 3 * (pos.row % 3)] =
+                  ".";
+                i = lastModifiedValArray[lastModifiedValArray.length - 1];
+                lastModifiedValArray.pop();
+                continue;
+              }
+            }
+          }
+
+          currentIdx += 1;
+        }
+
+        // displays final solution
+        return boardState;
+      }
+
+    solveButton.onclick = function() {
+      //Start timing
+      const t0 = performance.now(); 
+
+      //Return error if input invalid
       if (textArea.value.length != 81) {
         return (document.getElementById("error-msg").innerHTML =
           "<span style='color: red'>Error: Expected puzzle to be 81 characters long.</span>");
       }
-      // Load a simple puzzle into the text area
-      let sudokuString = textArea.value;
-      let rowsArray = [[], [], [], [], [], [], [], [], []];
-      let columnsArray = [[], [], [], [], [], [], [], [], []];
-      let gridsArray = [[], [], [], [], [], [], [], [], []];
-      let boardState = [];
 
-      sudokuString.split("").forEach((ele, idx) => {
-        let rowIdx = Math.floor(idx / 9);
-        let columnIdx = idx % 9;
-        let gridIdx = (Math.floor(idx / 3) % 3) + Math.floor(idx / 27) * 3;
+      // Show Loader
+      document.getElementById("container").style.display = "none";
+      document.getElementById("loader").style.display = "flex";
+      
+      //Run Solver
+      let solution = solveSudoku()
+      console.log("Final boardState", solution);
 
-        rowsArray[rowIdx].push(ele);
-        columnsArray[columnIdx].push(ele);
-        gridsArray[gridIdx].push(ele);
-
-        let pointObj = {
-          index: idx,
-          value: ele,
-          row: rowIdx,
-          column: columnIdx,
-          grid: gridIdx,
-        };
-        boardState.push(pointObj);
-      });
-
-      console.log("Initial boardState", boardState);
-      let currentIdx = 0;
-      let lastModifiedIdxArray = [0];
-      let lastModifiedValArray = [1];
-      let backtracked = false;
-      while (currentIdx < 81) {
-        let pos = boardState[currentIdx];
-        //let lastUsedNum = 1;
-        if (pos.value == ".") {
-          selectNum: for (var i = 1; i < 11; i++) {
-            if (backtracked) {
-              backtracked = false;
-            }
-            if (i < 10) {
-              let ans = String(i);
-              let checkIfValid =
-                !rowsArray[pos.row].includes(ans) &&
-                !columnsArray[pos.column].includes(ans) &&
-                !gridsArray[pos.grid].includes(ans);
-              if (checkIfValid) {
-                pos.value = ans;
-                rowsArray[pos.row][pos.column] = ans;
-                columnsArray[pos.column][pos.row] = ans;
-                gridsArray[pos.grid][
-                  (pos.column % 3) + 3 * (pos.row % 3)
-                ] = ans;
-                lastModifiedValArray.push(i);
-                lastModifiedIdxArray.push(currentIdx);
-                backtracked = false;
-                break selectNum;
-              }
-            } else {
-              //Handles running out of available nums and needing to backtrack
-              //console.log(`Backtracked from pos ${currentIdx} to pos ${lastModifiedIdxArray[lastModifiedIdxArray.length - 1]}`)
-              backtracked = true;
-              currentIdx =
-                lastModifiedIdxArray[lastModifiedIdxArray.length - 1];
-              lastModifiedIdxArray.pop();
-              pos = boardState[currentIdx];
-              pos.value = ".";
-              rowsArray[pos.row][pos.column] = ".";
-              columnsArray[pos.column][pos.row] = ".";
-              gridsArray[pos.grid][(pos.column % 3) + 3 * (pos.row % 3)] = ".";
-              i = lastModifiedValArray[lastModifiedValArray.length - 1];
-              lastModifiedValArray.pop();
-              continue;
-            }
-          }
-        }
-
-        currentIdx += 1;
-      }
-
-      // displays final solution
-
-      console.log("Final boardState", boardState);
+      //Populate elements with solution
       let solutionString = "";
-      for (let idx in boardState) {
-        solutionString += boardState[idx].value;
+      for (let idx in solution) {
+        solutionString += solution[idx].value;
       }
       textArea.value = solutionString;
       Array.from(sudokuInputs).forEach((ele, idx) => {
-        // Do stuff here
         ele.value = solutionString[idx];
       });
-      console.log(solutionString);
-    });
+
+      //Hide Loader
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("container").style.display = "flex";
+
+      //Stop timing and show performance
+      const t1 = performance.now(); 
+      document.getElementById("error-msg").innerHTML = `<span style='color: lightgreen'>Solved in ${(t1 - t0).toFixed(3)} milliseconds!</span>`;
+    };
   </script>
 </html>

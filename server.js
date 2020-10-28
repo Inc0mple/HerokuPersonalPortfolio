@@ -50,11 +50,11 @@ app.use(function (req, res, next) {
     "-" +
     current_datetime.getDate() +
     " " +
-    (current_datetime.getHours() > 10 ? current_datetime.getHours() : "0" + current_datetime.getHours()) +
+    (current_datetime.getHours() > 9 ? current_datetime.getHours() : "0" + current_datetime.getHours()) +
     ":" +
-    (current_datetime.getMinutes() > 10 ? current_datetime.getMinutes() : "0" + current_datetime.getMinutes()) +
+    (current_datetime.getMinutes() > 9 ? current_datetime.getMinutes() : "0" + current_datetime.getMinutes()) +
     ":" +
-    (current_datetime.getSeconds() > 10 ? current_datetime.getSeconds() : "0" + current_datetime.getSeconds());
+    (current_datetime.getSeconds() > 9 ? current_datetime.getSeconds() : "0" + current_datetime.getSeconds());
   let method = req.method;
   let url = req.url;
   let status = res.statusCode;
