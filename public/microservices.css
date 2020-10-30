@@ -1,0 +1,8 @@
+.highlight {
+    color: green;
+}
+
+#error-msg {
+    font-weight: normal;
+    color: red;
+  }

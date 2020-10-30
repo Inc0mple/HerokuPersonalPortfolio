@@ -18,7 +18,12 @@ const microservices = require("./api/microservices");
 const exercise = require("./api/exercise");
 const sudoku = require("./api/sudoku");
 const library = require("./api/library");
-
+const converter = require("./api/convertHandler")
+/*
+const americanToBritishSpelling = require("./translations/american-to-british-spelling")
+const americanToBritishTitles= require("./translations/american-to-british-titles")
+const britishOnly = require("./translations/british-only")
+*/
 const Schema = mongoose.Schema;
 
 const app = express();
@@ -35,6 +40,7 @@ mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const cors = require("cors");
 const { generate } = require("shortid");
 const { json } = require("body-parser");
+const ConvertHandler = require("./api/convertHandler");
 app.use(cors({ optionsSuccessStatus: 200 })); // some legacy browsers choke on 204
 
 // http://expressjs.com/en/starter/static-files.html
@@ -94,8 +100,8 @@ app.get("/api/whoami", requestheaderparser);
 //**********Start of URL Shortener API**********
 
 app.get("/shorturl", shorturl);
-app.post("/api/microservices/new", shorturl);
-app.get("/api/microservices/:shortid", shorturl);
+app.post("/api/shorturl/new", shorturl);
+app.get("/api/shorturl/:shortid", shorturl);
 
 
 //**********Start of Microservices**********
@@ -130,6 +136,8 @@ app.post("/api/books/:id", library);
 app.delete("/api/books", library);
 app.delete("/api/books/:id", library);
 
+//**********Start of Converter**********
+app.get("/api/convert",converter);
 
 // listen for requests :)
 let listener = app.listen(port, function () {

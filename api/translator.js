@@ -1,151 +1,19 @@
-<!DOCTYPE html>
+/*
+import { americanOnly } from '../translations/american-only.js';
+import { britishOnly } from '../translations/british-only.js';
+import { americanToBritishSpelling } from '../translations/american-to-british-spelling.js';
+import { americanToBritishTitles } from '../translations/american-to-british-titles.js';
+*/
 
-<html>
-  <head>
-    <title>Microservices</title>
+/*
+let textBox = document.getElementById("text-input")
+let translateButton = document.getElementById('translate-btn');
+let clearButton = document.getElementById('clear-btn');
+let locale = document.getElementById("locale-select");
+let outputDiv = document.getElementById("translated-sentence");
+let errorDiv = document.getElementById("error-msg");
 
-    <link href="microservices.css" rel="stylesheet" type="text/css" />
-
-    <script>
-      function goBack() {
-        document.getElementById("main-page-link").href =
-          "http://" + window.location.hostname + ":" + window.location.port;
-      }
-
-      function appendURL() {
-        let output =
-          "http://" +
-          window.location.hostname +
-          ":" +
-          window.location.port +
-          "/api" +
-          "/shorturl"+
-          "/" +
-          document.getElementById("user-input").value;
-        document.getElementById("redirect-form").action = output;
-        document.getElementById("output-val").innerHTML = output;
-        document.getElementById("output-link").href = output;
-      }
-
-      
-    </script>
-  </head>
-
-  <body>
-    <div class="app">
-      <a id="main-page-link" href="" onclick="goBack()"
-        ><p>Back to Main Page</p></a
-      >
-      <h2>Various Microservices</h2>
-      <div id="microservices-container">
-        <div id="analyser-tile" class="microservice-tile">
-          <h3>File Analyser:</h3>
-          <p>Please Upload a File ...</p>
-          <div class="view">
-            <h4 id="output"></h4>
-            <form
-              id="postFile"
-              enctype="multipart/form-data"
-              method="POST"
-              action="/fileanalyse/upload"
-            >
-              <input id="inputfield" type="file" name="upfile" />
-              <input id="button" type="submit" value="Upload" />
-            </form>
-          </div>
-        </div>
-        <div id="shorturl-tile" class="microservice-tile">
-          <div class="container">
-            <a id="main-page-link" href="" onclick="goBack()"
-              ><p>Back to Main Page</p></a
-            >
-            <h2>URL Shortener</h2>
-            <form id="postUrl" action="api/shorturl/new" method="POST">
-              <label for="url-input">URL to be shortened</label>
-              <input
-                id="url-input"
-                type="text"
-                name="inputURL"
-                value="https://www.freecodecamp.org"
-              />
-              <input type="submit" value="Receive short URL" target="_blank" />
-            </form>
-            <h3>Example Usage:</h3>
-            <a
-              href="https://inc0mple-portfolio.herokuapp.com/api/shorturl/2LiUHkrsC"
-            >
-              [this_project_url]/api/shorturl/2LiUHkrsC
-            </a>
-            <h3>Try short URL here:</h3>
-            <form
-              id="redirect-form"
-              action="api/shorturl"
-              method="GET"
-              target="_blank"
-            >
-              <label for="user-input"
-                >https://inc0mple-portfolio.herokuapp.com/api/shorturl/</label
-              >
-              <input
-                id="user-input"
-                type="text"
-                name="userURL"
-                value="2LiUHkrsC"
-              />
-              <input type="submit" onclick="appendURL()" value="Go to URL" />
-              <a id="output-link" href="" target="_blank"
-                ><p id="output-val"></p
-              ></a>
-            </form>
-          </div>
-        </div>
-        <div id="translator-tile" class="microservice-tile">
-          <div class="container">
-            <div class="form-container">
-              <textarea rows="10" cols="60" id="text-input"></textarea>
-              <br />
-              <select id="locale-select">
-                <option value="american-to-british">American to British</option>
-                <option value="british-to-american">British to American</option>
-              </select>
-              <input type="button" value="Translate" id="translate-btn" />
-              <input type="button" value="Clear" id="clear-btn" />
-            </div>
-          </div>
-        </div>
-        <div id="converter-tile" class="microservice-tile">
-          <div id="testui" style="margin-left: 5%">
-            <h2 style="text-align: left">Front-End:</h2>
-            <form id="convertForm" class="border">
-              <input
-                type="text"
-                id="convertField"
-                name="input"
-                placeholder="3.1mi"
-                style="width: 200px"
-              />
-              <input id="convert" type="submit" value="Convert!" />
-            </form>
-          </div>
-          <hr style="margin: 50px; margin-top: 200px" />
-        </div>
-      </div>
-      <div id="outputMsgBox">
-        <div id="outputMsg1">Output1 appears here</div>
-        <div id="outputMsg2">Output2 appears here</div>
-      </div>
-    </div>
-    <div class="footer"></div>
-  </body>
-  <script>
-  let textBox = document.getElementById("text-input")
-  let translateButton = document.getElementById('translate-btn');
-  let clearButton = document.getElementById('clear-btn');
-  let locale = document.getElementById("locale-select");
-  let outputDiv = document.getElementById("outputMsg1");
-  let errorDiv = document.getElementById("outputMsg2");
-
-  const americanOnly = {
+const americanOnly = {
     "acclimate": "acclimatise",
     "acetaminophen": "paracetamol",
     "baby carriage": "pram",
@@ -331,7 +199,7 @@
     "zucchini": "courgette"
 }
 
-  const americanToBritishSpelling = {
+const americanToBritishSpelling = {
     "accessorize": "accessorise",
     "accessorized": "accessorised",
     "accessorizes": "accessorises",
@@ -2033,7 +1901,7 @@
     "yogurts": "yoghurts"
 }
 
-  const americanToBritishTitles = {
+const americanToBritishTitles = {
     'mr.': 'mr',
     'mrs.': 'mrs',
     'ms.': 'ms',
@@ -2048,7 +1916,7 @@
     'Prof.': 'Prof'
 }
 
-  const britishOnly = {
+const britishOnly = {
     "abseil": "rappel",
     "accountancy": "accounting",
     "advert": "advertisement",
@@ -2294,9 +2162,10 @@
     "zebra crossing": "crosswalk"
 }
   
-  console.log("hi")
 
-  clearButton.addEventListener('click', () => {
+console.log("hi")
+
+clearButton.addEventListener('click', () => {
   outputDiv.innerHTML = "";
   textBox.value = "";
   console.log("Cleared")
@@ -2354,78 +2223,15 @@ translateButton.addEventListener('click', () => {
   if (initialInput == inputString) {
     inputString = "Everything looks good to me!"
   }
-  outputDiv.innerHTML = inputString;
-  errorDiv.innerHTML = "";
+  outputDiv.innerHTML = inputString
 
 });
 
-  </script>
-  <script
-    src="https://code.jquery.com/jquery-2.2.1.min.js"
-    integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-    crossorigin="anonymous"
-  >
 
-  </script>
-  <script>
-    $(function () {
-      $("#convertForm").submit(function (event) {
-        event.preventDefault();
-        $.ajax({
-          url: "/api/convert",
-          type: "get",
-          data: $("#convertForm").serialize(),
-          success: function (data) {
-            $("#outputMsg1").text(data.string || data);
-            $("#outputMsg2").text(JSON.stringify(data));
-          },
-        });
-      });
-    });
-  </script>
-  <script>
-    let outputMsg1 = document.getElementById('outputMsg1')
-    document.getElementById('postFile').addEventListener('submit', postFile)
-    document.getElementById('postUrl').addEventListener('submit', postUrl)
-
-
-    function postFile(e) {
-          //console.log(e[0])
-          e.preventDefault();
-          let form = document.getElementById("postFile")
-          let formData = new FormData(form)
-          //let file = document.getElementById('inputfield').files[0];
-          console.log(file)
-          //console.log(form)
-          fetch("/fileanalyse/upload", {
-            method:'POST',
-            body:formData
-          })
-          .then((res) => res.json())
-          .then((data) => {
-            outputMsg1.innerHTML = typeof data == "string" ? data : JSON.stringify(data)//stringify required or else [object object] returned
-            console.log(data)
-          })
-        }
-
-    function postUrl(e) {
-          e.preventDefault();
-          //let form = document.getElementById("postUrl")
-          //let formData = new FormData(form)
-          let input = document.getElementById('url-input').value;
-          console.log(input)
-          fetch("/api/shorturl/new", {
-            method:'POST',
-            headers: {'Content-Type': 'application/json'},
-            body:JSON.stringify({inputURL:input})
-          })
-          .then((res) => res.json())
-          .then((data) => {
-            outputMsg1.innerHTML = typeof data == "string" ? data : JSON.stringify(data)//stringify required or else [object object] returned
-            console.log(data)
-          })
-        }
-
-
-  </script>
-</html>
+try {
+    module.exports = {
+  
+    }
+  } catch (e) {}
+  
+*/
