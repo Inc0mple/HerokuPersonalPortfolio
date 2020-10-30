@@ -26,7 +26,7 @@ const ShortUrl = mongoose.model('ShortUrl', new Schema({
   // By default, it is undefined and is populated when you use a body-parser middleware
   // such as app.use(bodyParser.urlencoded({ extended: false })) or app.use(bodyParser.json()).
   
-  router.post("/api/shorturl/new", function (req, res) {
+  router.post("/api/microservices/new", function (req, res) {
     let userInput = req.body.inputURL;
     ShortUrl.findOne({original_url: userInput}).then(function(result) {
       if (result == null) {
@@ -52,7 +52,7 @@ const ShortUrl = mongoose.model('ShortUrl', new Schema({
     });
   });
   
-  router.get("/api/shorturl/:shortid", function(req, res) { //async required for await to work
+  router.get("/api/microservices/:shortid", function(req, res) { //async required for await to work
     let idReq = req.params.shortid; 
     //console.log("idReq = " + idReq)
     ShortUrl.findOne({suffix: idReq}).then(function(result) {

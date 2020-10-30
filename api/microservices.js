@@ -5,10 +5,14 @@ const multer  = require('multer'); //for file metadata
 const fs = require('fs'); //for file metadata 
 
 
+
+//
+// FILE ANALYSER
+//
 const upload = multer({ dest: 'uploads/' });
 
-router.get("/fileanalyse", function (req, res) {
-  res.sendFile('/views/fileanalyse.html',{ root: "./" });
+router.get("/microservices", function (req, res) {
+  res.sendFile('/views/microservices.html',{ root: "./" });
 });
 
 // variable in upload.single('') must have the same value as the 'name' attribute in the file input element in the html file
@@ -19,5 +23,17 @@ router.post("/fileanalyse/upload", upload.single('upfile'),function (req, res) {
   });
   return res.json({"name":req.file.originalname,"type":req.file.mimetype,"size":req.file.size})
 });
+
+//
+// SHORT URL
+//
+
+
+
+
+
+
+
+
 
 module.exports = router;

@@ -14,7 +14,7 @@ const fs = require("fs"); //for file metadata
 const timestamp = require("./api/timestamp");
 const requestheaderparser = require("./api/requestheaderparser");
 const shorturl = require("./api/shorturl");
-const fileanalyse = require("./api/fileanalyse");
+const microservices = require("./api/microservices");
 const exercise = require("./api/exercise");
 const sudoku = require("./api/sudoku");
 const library = require("./api/library");
@@ -94,14 +94,17 @@ app.get("/api/whoami", requestheaderparser);
 //**********Start of URL Shortener API**********
 
 app.get("/shorturl", shorturl);
-app.post("/api/shorturl/new", shorturl);
-app.get("/api/shorturl/:shortid", shorturl);
+app.post("/api/microservices/new", shorturl);
+app.get("/api/microservices/:shortid", shorturl);
 
+
+//**********Start of Microservices**********
+
+app.get("/microservices", microservices);
 
 //**********Start of File Metadata Microservice API**********
 
-app.get("/fileanalyse", fileanalyse);
-app.post("/fileanalyse/upload", fileanalyse);
+app.post("/fileanalyse/upload", microservices);
 
 
 //**********Start of Exercise Tracker API**********
