@@ -862,7 +862,7 @@
       </div>
     </div>
   </body>
-  <script async>
+  <script>
     let textArea = document.getElementById("text-input");
     let solveButton = document.getElementById("solve-button");
     let clearButton = document.getElementById("clear-button");
@@ -981,16 +981,15 @@
             ).length > 1;
           if (boardState[i].value != ".") {
             if (checkIfDuplicate) {
-              return (document.getElementById("error-msg").innerHTML =
-                "<span style='color: red'>Error: Invalid initial input.</span>");
+              return false
             }
           }
           //console.log(boardState[i].value)
         }
 
         let currentIdx = 0;
-        let lastModifiedIdxArray = [0];
-        let lastModifiedValArray = [1];
+        let lastModifiedIdxArray = [];
+        let lastModifiedValArray = [];
         let backtracked = false;
 
         while (currentIdx < 81) {
@@ -1023,10 +1022,16 @@
                 //Handles running out of available nums and needing to backtrack
                 //console.log(`Backtracked from pos ${currentIdx} to pos ${lastModifiedIdxArray[lastModifiedIdxArray.length - 1]}`)
                 backtracked = true;
+                console.log(lastModifiedIdxArray)
                 currentIdx =
                   lastModifiedIdxArray[lastModifiedIdxArray.length - 1];
+                
                 lastModifiedIdxArray.pop();
+                if (typeof currentIdx == 'undefined') {
+                  return "no solution"
+                }
                 pos = boardState[currentIdx];
+                console.log(currentIdx)
                 pos.value = ".";
                 rowsArray[pos.row][pos.column] = ".";
                 columnsArray[pos.column][pos.row] = ".";
@@ -1057,11 +1062,23 @@
       }
 
       // Show Loader
-      document.getElementById("container").style.display = "none";
-      document.getElementById("loader").style.display = "flex";
+      //document.getElementById("container").style.display = "none";
+      //document.getElementById("loader").style.display = "flex";
       
       //Run Solver
       let solution = solveSudoku()
+
+      //Error Handling. Uncomment loader once loader issue fixed
+      if (!solution) {
+        //document.getElementById("loader").style.display = "none";
+        //document.getElementById("container").style.display = "flex"
+        return (document.getElementById("error-msg").innerHTML = "<span style='color: red'>Error: Invalid initial input.</span>");
+      }
+      if (solution == "no solution") {
+        //document.getElementById("loader").style.display = "none";
+        //document.getElementById("container").style.display = "flex"
+        return (document.getElementById("error-msg").innerHTML = "<span style='color: red'>Error: No solution found.</span>");
+      }
       console.log("Final boardState", solution);
 
       //Populate elements with solution
@@ -1074,9 +1091,9 @@
         ele.value = solutionString[idx];
       });
 
-      //Hide Loader
-      document.getElementById("loader").style.display = "none";
-      document.getElementById("container").style.display = "flex";
+      //Hide Loader. Uncomment once loader issue fixed
+      //document.getElementById("loader").style.display = "none";
+      //document.getElementById("container").style.display = "flex";
 
       //Stop timing and show performance
       const t1 = performance.now(); 

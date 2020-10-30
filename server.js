@@ -101,16 +101,17 @@ app.get("/api/shorturl/:shortid", shorturl);
 //**********Start of File Metadata Microservice API**********
 
 app.get("/fileanalyse", fileanalyse);
-app.post("/fileanalyse/api/fileanalyse", fileanalyse);
+app.post("/fileanalyse/upload", fileanalyse);
 
 
 //**********Start of Exercise Tracker API**********
 
 app.get("/exercise", exercise);
-app.get("/exercise/api/exercise/users", exercise);
-app.post("/exercise/api/exercise/new-user", exercise);
-app.post("/exercise/api/exercise/add", exercise);
-app.get("/exercise/api/exercise/log", exercise);
+app.get("/exercise/users", exercise);
+app.post("/exercise/new-user", exercise);
+app.post("/exercise/add", exercise);
+app.get("/exercise/log", exercise);
+app.delete("/exercise/users", exercise);
 
 //**********Start of Sudoku**********
 

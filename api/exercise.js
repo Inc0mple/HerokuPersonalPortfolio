@@ -1,14 +1,14 @@
 const express = require("express");
-const router = express.Router(); 
-const mongo = require('mongodb');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser'); //for shorturl
+const router = express.Router();
+const mongo = require("mongodb");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser"); //for shorturl
 
-const Schema  = mongoose.Schema;
-const db_uri = "mongodb+srv://Incomple_:Overspleen@trainingcluster.s2foa.mongodb.net/shorturlDB?retryWrites=true&w=majority"
+const Schema = mongoose.Schema;
+const db_uri =
+  "mongodb+srv://Incomple_:Overspleen@trainingcluster.s2foa.mongodb.net/shorturlDB?retryWrites=true&w=majority";
 
-mongoose.connect(db_uri, {useNewUrlParser: true, useUnifiedTopology: true });
-
+mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const months = [
   "Jan",
@@ -46,19 +46,23 @@ router.get("/exercise", function (req, res) {
 });
 
 //.lean() returns POJOs (plain old javascript objects)
-router.get("/exercise/api/exercise/users", function (req, res) {
+router.get("/exercise/users", function (req, res) {
   Profile.find()
     .select("-log")
     .lean()
     .then((result) => {
-      return res.send(result);
+      return res.json(result);
     });
 });
 
-router.post("/exercise/api/exercise/new-user", (req, res) => {
+router.post("/exercise/new-user", (req, res) => {
   let userInput = req.body.username;
+  console.log(userInput);
+  if (!userInput) {
+    return res.json("Please enter a username");
+  }
   Profile.findOne({ user_name: userInput }).then((result) => {
-    console.log("result = " + result);
+    console.log("Database result = " + result);
     if (result == null) {
       let newUser = new Profile({
         user_name: userInput,
@@ -71,13 +75,17 @@ router.post("/exercise/api/exercise/new-user", (req, res) => {
       //console.log(req.body); "inputURL" is the value of the "name" attribute from the input element in shorturl.html
       return res.json({ username: newUser.user_name, _id: newUser._id });
     } else {
-      return res.send("Username already taken");
+      return res.json(`Username already taken. userId: ${result._id}`);
     }
   });
 });
 
-router.post("/exercise/api/exercise/add", (req, res) => {
+router.post("/exercise/add", (req, res) => {
   let inputId = req.body.userId;
+  if (!mongoose.Types.ObjectId.isValid(inputId)) {
+    return res.json("Invalid userId")
+  }
+
   let inputDescription = req.body.description;
   let inputDuration = parseFloat(req.body.duration);
   let inputDate;
@@ -86,17 +94,17 @@ router.post("/exercise/api/exercise/add", (req, res) => {
   } else {
     inputDate = new Date();
   }
-  console.log(inputDate);
+  //console.log(inputDate);
   Profile.findOne({ _id: inputId }).then((result) => {
     //console.log("result = " + result)
     if (result == null) {
-      return res.send("User not found");
+      return res.json("User not found");
     } else if (
       inputDescription == "" ||
       isNaN(inputDuration) ||
       isNaN(inputDate)
     ) {
-      return res.send("Fields not completed properly");
+      return res.json("Fields not completed properly");
     } else {
       let newLog = {
         description: inputDescription,
@@ -120,19 +128,21 @@ router.post("/exercise/api/exercise/add", (req, res) => {
   });
 });
 
-router.get("/exercise/api/exercise/log", function (req, res) {
+router.get("/exercise/log", function (req, res) {
   let inputId = req.query.userId;
   let fromDate = new Date(req.query.from);
   let toDate = new Date(req.query.to);
   let responseJson = {};
-
+  //console.log(inputId)
+  //console.log((mongoose.Types.ObjectId.isValid(inputId)))
+  //console.log(req)
   if (mongoose.Types.ObjectId.isValid(inputId)) {
     Profile.findById(inputId).then((result) => {
       //bugs out if inputId is not in an mongoose id object format, hence requiring a (mongoose.Types.ObjectId.isValid(inputId)) check first
       //console.log("result = " + result)
       //console.log(fromDate)
       if (result == null) {
-        return res.send("Unknown userId");
+        return res.json("Unknown userId");
       } else {
         responseJson._id = result._id;
         responseJson.username = result.user_name;
@@ -177,12 +187,21 @@ router.get("/exercise/api/exercise/log", function (req, res) {
         reorderedLog.splice(0, reorderedLog.length - limit); //if limit empty, removes nothing, else remove everything - limit
         responseJson.count = reorderedLog.length;
         responseJson.log = reorderedLog;
-        return res.send(responseJson);
+        return res.json(responseJson);
       }
     });
   } else {
-    return res.send("Unknown userId");
+    //console.log("bad id")
+    return res.json("Unknown userId");
   }
+});
+
+router.delete("/exercise/users", function (req, res) {
+  //if successful response will be 'complete delete successful'
+  Profile.deleteMany({}).then(function (result) {
+    console.log("deleted everything :(");
+    return res.json("All users deleted");
+  });
 });
 
 module.exports = router;

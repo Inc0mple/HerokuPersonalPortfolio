@@ -2,10 +2,10 @@
 <html>
 
    <head>
-      <title>Exercise Tracker | Free Code Camp</title>
-      <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon"/>
+      <title>Exercise Tracker</title>
+      <link rel="shortcut icon" href="" type="image/x-icon"/>
       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-      <link href="style.css" rel="stylesheet" type="text/css">
+      <link href="exercise.css" rel="stylesheet" type="text/css">
 
       <script>
          function goBack() {
@@ -15,28 +15,149 @@
    </head>
 
    <body>
-      <div class="container">
-         <a id="main-page-link" href="" onclick=goBack() ><p>Back to Main Page</p></a>
-         <h1>Exercise tracker</h1>
-          <form action="/exercise/api/exercise/new-user" method="post">
-            <h3>Create a New User</h3>
-            <p><code>POST /api/exercise/new-user</code></p>
+    
+     <div id="app">
+      <h1 id="title">Exercise Tracker</h1>
+      <div id="container">
+        <div id="input-container">
+          <form class="form" id="postUser" action="/exercise/new-user" method="post">
+            <h3 class="input-details">Create a New User</h3>
+            <p class="input-details"><code>POST exercise/new-user</code></p>
             <input id="uname" type="text" name="username" placeholder="username">
             <input type="submit" value="Submit">
           </form>
-          <form action="/exercise/api/exercise/add" method="post">
-            <h3>Add exercises</h3>
-            <p><code>POST /api/exercise/add</code></p>
+          <form class="form" id="postExercise" action="/exercise/add" method="post">
+            <h3 class="input-details">Add exercises</h3>
+            <p class="input-details"><code>POST exercise/add</code></p>
             <input id="uid" type="text" name="userId" placeholder="userId*">
             <input id="desc" type="text" name="description" placeholder="description*">
             <input id="dur" type="text" name="duration" placeholder="duration* (mins.)">
             <input id="dat" type="text" name="date" placeholder="date (yyyy-mm-dd)">
             <input type="submit" value="Submit">
           </form>
-          <p><strong>GET users's exercise log: </strong><code>GET /api/exercise/log?{userId}[&amp;from][&amp;to][&amp;limit]</code></p>
-          <p><strong>{ }</strong> = required, <strong>[ ]</strong> = optional</p>
-          <p><strong>from, to</strong> = dates (yyyy-mm-dd); <strong>limit</strong> = number</p>
+          <form class="form" id="getExercise" action="/exercise/log" method="get">
+            <h3 class="input-details">Get Exercise Log</h3>
+            <p class="input-details"><code>GET exercise/log</code></p>
+            <input id="uid2" type="text" name="userId" placeholder="userId*">
+            <input id="from" type="text" name="from" placeholder="from (yyyy-mm-dd)">
+            <input id="to" type="text" name="to" placeholder="to (yyyy-mm-dd)">
+            <input id="limit" type="text" name="limit" placeholder="number">
+            <input type="submit" value="Submit">
+          </form>
+          <div class="form">
+            <h3 class="input-details">Admin Functions:</h3>
+            <input id="getUsers" type="button" value="Get all users">
+            <input id="deleteUsers" type="button" value="Delete all users">
+          </div>
+        </div>
+        <div id="output-container">
+        <h1 id="output-title">Output</h1>
+        <div id="outputMsgBox">
+          <div id="outputMsg">Output appears here</div>
+        </div>
+        </div>
       </div>
+    </div>
+      <script>
+      
+        document.getElementById('postUser').addEventListener('submit', postUser)
+        document.getElementById('postExercise').addEventListener('submit', postExercise)
+        document.getElementById('getExercise').addEventListener('submit', getExercise)
+        document.getElementById('getUsers').addEventListener('click', getUsers)
+        document.getElementById('deleteUsers').addEventListener('click', deleteUsers)
+        let outputMsg = document.getElementById("outputMsg")
+
+        function postUser(e) {
+          e.preventDefault();
+          let username = document.getElementById('uname').value;
+          //console.log(form)
+          fetch("/exercise/new-user", {
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify({username:username})
+          })
+          .then((res) => res.json())
+          .then((data) => {
+            outputMsg.innerHTML = typeof data == "string" ? data : JSON.stringify(data)//stringify required or else [object object] returned
+            console.log(data)
+          })
+        }
+
+        function postExercise(e) {
+          e.preventDefault();
+          let userId = document.getElementById('uid').value;
+          let description = document.getElementById('desc').value;
+          let duration = document.getElementById('dur').value;
+          let date = document.getElementById('dat').value;
+          //console.log(new FormData(e.currentTarget))
+          fetch("/exercise/add", {
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify({userId:userId,description:description,duration:duration,date:date})
+          })
+          .then((res) => res.json())
+          .then((data) => {
+            outputMsg.innerHTML = `${JSON.stringify(data)}`
+            console.log(data)
+          })
+        }
+
+        function getExercise(e) {
+          e.preventDefault();
+          
+          let inputId = document.getElementById('uid2').value;
+          let fromDate = document.getElementById('from').value;
+          let toDate = document.getElementById('to').value;
+          let limit = document.getElementById('limit').value;
+          let url = "/exercise/log?" + new URLSearchParams({
+            userId: inputId,
+            from: fromDate,
+            to: toDate,
+            limit: limit
+          })
+          //console.log(new FormData(e.currentTarget))
+          fetch(url, {
+            method:'GET'
+          })
+          .then((res) => res.json())
+          .then((data) => {
+            outputMsg.innerHTML = `${JSON.stringify(data)}`
+            console.log(data)
+          })
+        }
+
+        function getUsers(e) {
+          e.preventDefault();
+          //let username = document.getElementById('uname').value;
+          //console.log(form)
+          fetch("/exercise/users", {
+            method:'GET'
+          })
+          .then((res) => res.json())
+          .then((data) => {
+            outputMsg.innerHTML = typeof data == "string" ? data : JSON.stringify(data)
+            console.log(data)
+          })
+        }
+
+        function deleteUsers(e) {
+          e.preventDefault();
+          //let username = document.getElementById('uname').value;
+          //console.log(form)
+          fetch("/exercise/users", {
+            method:'DELETE'
+          })
+          .then((res) => res.json())
+          .then((data) => {
+            outputMsg.innerHTML = `${JSON.stringify(data)}`
+            console.log(data)
+          })
+        }
+
+
+
+      </script>
+      <a id="main-page-link" href="" onclick=goBack() ><p>Back to Main Page</p></a>
    </body>
 
 </html>
