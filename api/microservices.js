@@ -18,11 +18,14 @@ router.get("/microservices", function (req, res) {
 // variable in upload.single('') must have the same value as the 'name' attribute in the file input element in the html file
 router.post("/fileanalyse/upload", upload.single('upfile'),function (req, res) {
   console.log(req.file)
+  if (!req.file) {
+    return res.json("No files detected")
+  }
   fs.unlink('./uploads/' + req.file.filename, function(err) { //deletes uploaded file to save space
     if (err) throw err;
     console.log('deleted ' + req.file.filename );
   });
-  return res.json({"name":req.file.originalname,"type":req.file.mimetype,"size":req.file.size})
+  return res.json(`The file "${req.file.originalname}" has been succesfully uploaded and analysed. It is a ${req.file.mimetype} file and has a size of ${req.file.size} bytes.`)
 });
 
 //
@@ -41,15 +44,15 @@ module.exports = function (app) {
       var initNum = convertHandler.getNum(input);
       var initUnit = convertHandler.getUnit(input);
       if (initNum == "invalid number" && initUnit == "invalid unit") {
-        res.json("invalid number and unit")
+        res.json("Invalid number and unit")
       }
 
       if (initNum == "invalid number") {
-        res.json("invalid number")
+        res.json("Invalid number")
       }
       
       if (initUnit == "invalid unit") {
-        res.json("invalid unit")
+        res.json("Invalid unit")
       }
       var returnNum = eval(convertHandler.convert(initNum, initUnit).toFixed(5));
       var returnUnit = convertHandler.getReturnUnit(initUnit);

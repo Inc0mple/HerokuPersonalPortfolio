@@ -2,7 +2,115 @@
     color: green;
 }
 
+body{
+    background-color: black;
+    color:white;
+}
+
+#app{
+    margin:30px;
+    background-color:rgb(46, 46, 46) ;
+    color: white;
+    min-width: 786px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+}
+
 #error-msg {
     font-weight: normal;
     color: red;
+  }
+
+#ioContainer {
+    margin-top: -20px;
+    display:flex;
+    flex-direction: column;
+}
+
+#outputMsgBox {
+    background-color: rgb(63, 63, 63);
+    border: 1px solid black;
+    margin:10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+}
+
+#outputMgsDiv {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(195, 195, 195);
+    color:black ;
+    margin:10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    min-height: 100px;
+}
+
+#microservices-container {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+
+    border-radius: 5px;
+}
+
+.microservice-tile {
+    background-color:rgb(63, 63, 63);
+    color:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    height:auto;
+    min-width: 320px;
+    margin:10px;
+    padding:10px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+input[type=text],input[type=submit],input[type=file],textarea,input,#inputField,#locale-select{
+    background-color:black;
+    color:white;
+}
+
+.title{
+    text-align: center;
+}
+
+#outputMsg{
+    text-align: center;
+    word-wrap: break-word;
+    margin-top: 20px;
+}
+
+
+
+form{
+    text-align: center;
+}
+
+#mainTitle{
+    padding-top:20px;
+    padding-bottom:10px;
+}
+
+@media only screen and (max-width: 625px) {
+    #app{
+        min-width: 430px;
+    }
+    #microservices-container  {
+      display:flex;
+      flex-direction: column;
+    }
+
+  }
+
+  #main-page-link, #main-page-text{
+      color:white;
+      text-align: center;
+      padding-bottom: 20px;
+  }
+
+  #output-val,#output-link{
+      color:lightblue;
   }

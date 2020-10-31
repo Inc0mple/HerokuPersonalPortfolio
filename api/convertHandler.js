@@ -4,7 +4,11 @@ const router = express.Router();
 var convertHandler = new ConvertHandler();
 function ConvertHandler() {
   this.getNum = function (input) {
+    //console.log(!input)
     let result;
+    if (!input) {
+      return "invalid number"
+    }
     regObj = input.match(/[\d]+[\/|\.]*[\d]*[\/|\.]*[\d]*/);
 
     if (!regObj) {
@@ -114,18 +118,21 @@ function ConvertHandler() {
 }
 router.get("/api/convert", function (req, res) {
   var input = req.query.input;
+  if (!input) {
+    return res.json("No inputs for converter detected");
+  }
   var initNum = convertHandler.getNum(input);
   var initUnit = convertHandler.getUnit(input);
   if (initNum == "invalid number" && initUnit == "invalid unit") {
-    res.json("invalid number and unit");
+    res.json("Invalid number and unit");
   }
 
   if (initNum == "invalid number") {
-    res.json("invalid number");
+    res.json("Invalid number");
   }
 
   if (initUnit == "invalid unit") {
-    res.json("invalid unit");
+    res.json("Invalid unit");
   }
   var returnNum = eval(convertHandler.convert(initNum, initUnit).toFixed(5));
   var returnUnit = convertHandler.getReturnUnit(initUnit);

@@ -44,10 +44,10 @@ const ShortUrl = mongoose.model('ShortUrl', new Schema({
         });
         //console.log("shorturl post request called. req.body: ");
         //console.log(req.body); "inputURL" is the value of the "name" attribute from the input element in shorturl.html
-        return res.json({"original_url" : userInput ,"short_url": req.protocol + '://' + req.get('host') + req.originalUrl.slice(0,-3) + newShortId,"suffix": newShortId});
+        return res.json({"original_url" : userInput ,"new_url": req.protocol + '://' + req.get('host') + req.originalUrl.slice(0,-3) + newShortId,"suffix": newShortId});
       }
       else{
-        return res.json({"original_url" : result.original_url ,"short_url": req.protocol + '://' + req.get('host') + req.originalUrl.slice(0,-3) + result.suffix,"suffix": result.suffix});
+        return res.json(`Your URL "${result.original_url}" is now accessible with the following URL: "${req.protocol + '://' + req.get('host') + req.originalUrl.slice(0,-3) + result.suffix}" with the suffix "${result.suffix}".`);
       }
     });
   });

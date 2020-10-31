@@ -12,7 +12,7 @@ body {
     color: rgb(226, 226, 226);
     height: 100%;
     width:auto;
-    min-width: 882px;
+    min-width: 950px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
 }
@@ -148,4 +148,17 @@ input[type=text]{
     margin:20px;
 
     word-wrap: break-word;
+}
+
+@media only screen and (max-width: 800px) {
+  #container  {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #app{
+    min-width: 430px;
+  }
+
 }
