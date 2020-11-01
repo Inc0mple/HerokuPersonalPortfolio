@@ -6,14 +6,16 @@ const fs = require('fs'); //for file metadata
 
 
 
-//
-// FILE ANALYSER
-//
+
 const upload = multer({ dest: 'uploads/' });
 
 router.get("/microservices", function (req, res) {
   res.sendFile('/views/microservices.html',{ root: "./" });
 });
+
+//
+// FILE ANALYSER
+//
 
 // variable in upload.single('') must have the same value as the 'name' attribute in the file input element in the html file
 router.post("/fileanalyse/upload", upload.single('upfile'),function (req, res) {
@@ -72,13 +74,5 @@ module.exports = function (app) {
     });
     
 };
-
-
-
-
-
-
-
-
 
 module.exports = router;

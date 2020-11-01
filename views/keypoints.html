@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Keypoints</title>
+      <link rel="shortcut icon" href="" type="image/x-icon"/>
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+      <link href="" rel="stylesheet" type="text/css">
+
+      <script>
+         function goBack() {
+           document.getElementById("main-page-link").href = "http://"+window.location.hostname+":"+window.location.port;
+         }
+     </script>
+   </head>
+
+   <body>
+    
+     <div id="app">
+      <h1 id="title">Keypoints</h1>
+      <div id="container">
+        <div id="input-container">
+            <div id="keypoints-tile" class="microservice-tile">
+                <h3 class="title">Keypoints:</h3>
+                <p>Please Upload a File ...</p>
+                <div class="view">
+                  <h4 id="output"></h4>
+                  <form
+                    id="postImage"
+                    enctype="multipart/form-data"
+                    method="POST"
+                    action="/keypoints/upload"
+                  >
+                    <input id="inputfield" type="file" name="upfile" />
+                    <input id="button" type="submit" value="Upload Image" />
+                  </form>
+                </div>
+              </div>
+        </div>
+        <div id="output-container">
+        <h1 id="output-title">Output</h1>
+        <div id="outputMsgBox">
+          <input type="button" value="Process" id="processImage" />
+          <div id="outputImgDiv">Output Image
+            <img id="outputImg" src="" />
+          </div>
+          <div id="outputMsg">Output Msg</div>
+        </div>
+        </div>
+      </div>
+    </div>
+      <script>
+        let outputMsg = document.getElementById('outputMsg')
+        document.getElementById('postImage').addEventListener('submit', postImage)
+        document.getElementById('processImage').addEventListener('click', processImage)
+
+        function postImage(e) {
+          //console.log(e[0])
+          e.preventDefault();
+          let form = document.getElementById("postImage")
+          let formData = new FormData(form)
+          var timestamp = new Date().getTime(); 
+
+          fetch("/keypoints/upload", {
+            method:'POST',
+            body:formData
+          })
+          .then((res) => res.json())
+          .then((data) => {
+            document.getElementById("outputImg").src = "./keypoints/upload/rawImage.png?t=" + timestamp
+            console.log(data)
+          })
+        };
+
+        function processImage(e) {
+            var timestamp = new Date().getTime(); 
+            console.log("processing")
+            e.preventDefault();
+            fetch("/keypoints/process", {
+            method:'GET'
+          })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data)
+            const passRegex = RegExp("Python processing done");
+            const failRegex = RegExp("No person detected");
+            if (passRegex.test(data)) {
+              document.getElementById("outputImg").src = "./keypoints/upload/processedImage.png?t=" + timestamp
+            }
+            
+          })
+        }
+      
+      </script>
+      <a id="main-page-link" href="" onclick=goBack() ><p>Back to Main Page</p></a>
+   </body>
+
+</html>

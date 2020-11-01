@@ -1,3 +1,7 @@
+* {
+    font-size: 1.12rem;
+}
+
 .highlight {
     color: green;
 }
@@ -11,7 +15,7 @@ body{
     margin:30px;
     background-color:rgb(46, 46, 46) ;
     color: white;
-    min-width: 786px;
+    min-width: 900px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
 }
@@ -59,7 +63,7 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
     height:auto;
-    min-width: 320px;
+    min-width: 400px;
     margin:10px;
     padding:10px;
     justify-content: center;
@@ -75,6 +79,7 @@ input[type=text],input[type=submit],input[type=file],textarea,input,#inputField,
 
 .title{
     text-align: center;
+    font-size: 1.5rem;
 }
 
 #outputMsg{
@@ -94,7 +99,7 @@ form{
     padding-bottom:10px;
 }
 
-@media only screen and (max-width: 625px) {
+@media only screen and (max-width: 750px) {
     #app{
         min-width: 430px;
     }

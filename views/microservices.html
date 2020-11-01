@@ -37,7 +37,7 @@
       <div id="ioContainer">
         <div id="microservices-container">
           <div id="analyser-tile" class="microservice-tile">
-            <h3>Basic File Analyser:</h3>
+            <h3 class="title">Basic File Analyser:</h3>
             <p>Please Upload a File ...</p>
             <div class="view">
               <h4 id="output"></h4>
@@ -104,7 +104,7 @@
           </div>
           <div id="converter-tile" class="microservice-tile">
             <div id="testui">
-              <h3>Metric-Imperial Converter</h3>
+              <h3 class="title">Metric-Imperial Converter</h3>
               <form id="convertForm" class="border">
                 <input
                   type="text"
@@ -2307,8 +2307,7 @@ translateButton.addEventListener('click', () => {
   let initialInput = textBox.value
   let inputString = textBox.value 
   if (locale.value == "american-to-british") {
-    //to do: handle time
-    inputString = inputString.replace(/(?<=\d\d):(?=\d\d)/, `<span class="highlight">.</span>`)
+    inputString = inputString.replace(/(?<=\d):(?=\d\d)/, `<span class="highlight">.</span>`)
     for (const americanPhrase in americanOnly) {
       let regObj = new RegExp(americanPhrase,"gi")
       //console.log(regObj)
@@ -2329,7 +2328,7 @@ translateButton.addEventListener('click', () => {
 
   }
   else if (locale.value == "british-to-american") {
-    inputString = inputString.replace(/(?<=\d\d)\.(?=\d\d)/, `<span class="highlight">:</span>`)
+    inputString = inputString.replace(/(?<=\d)\.(?=\d\d)/, `<span class="highlight">:</span>`)
     for (const britishPhrase in britishOnly) {
       let regObj = new RegExp(britishPhrase,"gi")
       inputString = inputString.replace(regObj, `<span class="highlight">${britishOnly[britishPhrase]}</span>`)
@@ -2407,10 +2406,7 @@ translateButton.addEventListener('click', () => {
 
     function postUrl(e) {
           e.preventDefault();
-          //let form = document.getElementById("postUrl")
-          //let formData = new FormData(form)
           let input = document.getElementById('url-input').value;
-          console.log(input)
           fetch("/api/shorturl/new", {
             method:'POST',
             headers: {'Content-Type': 'application/json'},

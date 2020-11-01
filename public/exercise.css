@@ -1,3 +1,7 @@
+* {
+  font-size: 1.10rem;
+}
+
 body {
     background-color: #ccc;
 }
@@ -5,6 +9,7 @@ body {
 #title{
     text-align: center;
     padding-top: 1rem;
+    font-size: 2rem;
 }
 
 #app {
@@ -158,7 +163,11 @@ input[type=text]{
   }
 
   #app{
-    min-width: 430px;
+    min-width: 650px;
+  }
+
+  #input-container, #output-container{
+    min-width: 600px;
   }
 
 }
