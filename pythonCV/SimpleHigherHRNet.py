@@ -109,7 +109,7 @@ class SimpleHigherHRNet:
                 print("GPU(s) '%s' will be used" % str(self.device))
                 device_ids = [int(x) for x in str(self.device)[5:].split(',')]
 
-            self.model = torch.nn.DataParallel(self.model, device_ids=device_ids)
+            #self.model = torch.nn.DataParallel(self.model, device_ids=device_ids)
         elif 'cpu' == str(self.device):
             print("device: 'cpu'")
         else:
