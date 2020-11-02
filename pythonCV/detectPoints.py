@@ -2,14 +2,21 @@ print("python script now running")
 
 
 import cv2
+print("imported cv2")
 import sys
+print("imported sys")
 from SimpleHigherHRNet import SimpleHigherHRNet
+print("imported SimpleHigherHRNet")
 from misc.visualization import draw_points, draw_points_and_skeleton
+print("imported misc.visualization")
 import numpy as np
+print("imported numpy")
 import matplotlib.pyplot as plt
+print("imported plt")
 import torch
+print("imported torch")
 from PIL import Image, ImageChops
-print("modules imported")
+print("imported PIL")
 
 skeleton = [[15, 13], [13, 11], [16, 14], [14, 12], [11, 12], [5, 11], [6, 12], [5, 6], [5, 7], [6, 8], [7, 9], [8, 10], [1, 2], [0, 1], [0, 2], [1, 3], [2, 4]]
 model = SimpleHigherHRNet(32, 17, "./pythonCV/weights/pose_higher_hrnet_w32_512.pth")
