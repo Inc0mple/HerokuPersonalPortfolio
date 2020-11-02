@@ -1,6 +1,6 @@
-print("python script now running")
+print("python script now running!!")
 
-
+print("starting imports")
 import cv2
 print("imported cv2")
 import sys
