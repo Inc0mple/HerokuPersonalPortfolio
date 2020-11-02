@@ -1,4 +1,4 @@
--f https://download.pytorch.org/whl/torch_stable.html
+http://download.pytorch.org/whl/cpu/torch-0.4.1-cp36-cp36m-linux_x86_64.whl
 ffmpeg-python>=0.2.0
 matplotlib>=3.0.2
 munkres>=1.1.2
