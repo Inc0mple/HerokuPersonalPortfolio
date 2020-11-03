@@ -1,5 +1,6 @@
 {
     "python.autoComplete.extraPaths": [
     
-    ]
+    ],
+    "python.pythonPath": "C:\\Users\\bryan\\anaconda3\\python.exe"
 }

@@ -50,14 +50,19 @@ router.get("/keypoints/process", (req, res) => {
     );
     //console.log("process: ", process)
     process.stdout.on('data', (data) => {
-        console.log("now on stout")
+        const passRegex = RegExp("Python processing done");
+        const failRegex = RegExp("No person detected");
+        console.log("now on stdout")
         console.log(data)
         console.log(data.toString())
-        if (data.toString() == "No person detected") {
+        if (failRegex.test(data.toString())) {
           console.log("server acknowledged lack of person detection from python script")
           return res.json("No person detected")
         }
-        return res.json(data.toString())
+        else if (passRegex.test(data.toString())){
+          return res.json(data.toString())
+        }
+        
     });
 
     process.stderr.on('data', function(data) {
