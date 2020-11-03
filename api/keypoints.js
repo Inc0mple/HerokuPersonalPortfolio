@@ -59,7 +59,15 @@ router.get("/keypoints/process", (req, res) => {
         }
         return res.json(data.toString())
     });
-    
+
+    process.stderr.on('data', function(data) {
+      console.log("stderr: "+ data.toString())
+    });
+    /*
+    process.on('exit', function(code) {
+      console.log('exit code: ' + code);
+    });
+    */
 });
 
 router.get("/keypoints/upload/processedImage.png", (req, res) => {
