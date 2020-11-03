@@ -1022,7 +1022,7 @@
                 //Handles running out of available nums and needing to backtrack
                 //console.log(`Backtracked from pos ${currentIdx} to pos ${lastModifiedIdxArray[lastModifiedIdxArray.length - 1]}`)
                 backtracked = true;
-                console.log(lastModifiedIdxArray)
+                //console.log(lastModifiedIdxArray)
                 currentIdx =
                   lastModifiedIdxArray[lastModifiedIdxArray.length - 1];
                 
@@ -1031,7 +1031,7 @@
                   return "no solution"
                 }
                 pos = boardState[currentIdx];
-                console.log(currentIdx)
+                //console.log(currentIdx)
                 pos.value = ".";
                 rowsArray[pos.row][pos.column] = ".";
                 columnsArray[pos.column][pos.row] = ".";
@@ -1050,10 +1050,10 @@
         // displays final solution
         return boardState;
       }
-
-    solveButton.onclick = function() {
+    solveButton.onclick = function (){
+    //solveButton.onclick = function() {
       //Start timing
-      const t0 = performance.now(); 
+      
 
       //Return error if input invalid
       if (textArea.value.length != 81) {
@@ -1061,43 +1061,49 @@
           "<span style='color: red'>Error: Expected puzzle to be 81 characters long.</span>");
       }
 
-      // Show Loader
-      //document.getElementById("container").style.display = "none";
-      //document.getElementById("loader").style.display = "flex";
+      //Show Loader
+      document.getElementById("container").style.display = "none";
+      document.getElementById("loader").style.display = "flex";
       
-      //Run Solver
-      let solution = solveSudoku()
+      setTimeout(function() {
+        const t0 = performance.now(); 
+        
+      
+        //Run Solver
+        let solution = solveSudoku()
 
-      //Error Handling. Uncomment loader once loader issue fixed
-      if (!solution) {
-        //document.getElementById("loader").style.display = "none";
-        //document.getElementById("container").style.display = "flex"
-        return (document.getElementById("error-msg").innerHTML = "<span style='color: red'>Error: Invalid initial input.</span>");
-      }
-      if (solution == "no solution") {
-        //document.getElementById("loader").style.display = "none";
-        //document.getElementById("container").style.display = "flex"
-        return (document.getElementById("error-msg").innerHTML = "<span style='color: red'>Error: No solution found.</span>");
-      }
-      console.log("Final boardState", solution);
+        //Error Handling. Uncomment loader once loader issue fixed
+        if (!solution) {
+          //document.getElementById("loader").style.display = "none";
+          //document.getElementById("container").style.display = "flex"
+          return (document.getElementById("error-msg").innerHTML = "<span style='color: red'>Error: Invalid initial input.</span>");
+        }
+        if (solution == "no solution") {
+          //document.getElementById("loader").style.display = "none";
+          //document.getElementById("container").style.display = "flex"
+          return (document.getElementById("error-msg").innerHTML = "<span style='color: red'>Error: No solution found.</span>");
+        }
+        console.log("Final boardState", solution);
 
-      //Populate elements with solution
-      let solutionString = "";
-      for (let idx in solution) {
-        solutionString += solution[idx].value;
-      }
-      textArea.value = solutionString;
-      Array.from(sudokuInputs).forEach((ele, idx) => {
-        ele.value = solutionString[idx];
-      });
+        //Populate elements with solution
+        let solutionString = "";
+        for (let idx in solution) {
+          solutionString += solution[idx].value;
+        }
+        textArea.value = solutionString;
+        Array.from(sudokuInputs).forEach((ele, idx) => {
+          ele.value = solutionString[idx];
+        });
 
-      //Hide Loader. Uncomment once loader issue fixed
-      //document.getElementById("loader").style.display = "none";
-      //document.getElementById("container").style.display = "flex";
-
+        //Hide Loader. Uncomment once loader issue fixed
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("container").style.display = "flex";
+        const t1 = performance.now();
+        document.getElementById("error-msg").innerHTML = `<span style='color: lightgreen'>Solved in ${(t1-t0 > 10)?(t1 - t0).toFixed(3):"less than 10"} milliseconds!</span>`;
+      }, 10)
       //Stop timing and show performance
-      const t1 = performance.now(); 
-      document.getElementById("error-msg").innerHTML = `<span style='color: lightgreen'>Solved in ${(t1 - t0).toFixed(3)} milliseconds!</span>`;
+      
+      
     };
   </script>
 </html>
