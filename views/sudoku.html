@@ -1098,8 +1098,8 @@
         document.getElementById("loader").style.display = "none";
         document.getElementById("container").style.display = "flex";
         const t1 = performance.now();
-        document.getElementById("error-msg").innerHTML = `<span style='color: lightgreen'>Solved in ${(t1-t0 > 10)?(t1 - t0).toFixed(3):"less than 10"} milliseconds!</span>`;
-      }, 10)
+        document.getElementById("error-msg").innerHTML = `<span style='color: lightgreen'>Solved in ${(t1-t0 > 50)?(t1 - t0).toFixed(3):"less than 50"} milliseconds!</span>`;
+      }, 50)
       //Stop timing and show performance
       
       
