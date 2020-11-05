@@ -19,6 +19,9 @@
   </head>
 
   <body>
+    <a id="main-page-link" href="" onclick="goBack()"
+        ><p>Back to Main Page</p></a
+      >
     <div id="app">
       <h1 id="title">Pose Estimation with HigherHRNet</h1>
       <div id="container">
@@ -37,7 +40,7 @@
                 action="/keypoints/upload"
               >
                 <input id="inputfield" type="file" name="upfile" />
-                <input id="button" type="submit" value="Upload Image" />
+                <input id="uploadImage" type="submit" value="Upload Image" />
               </form>
             </div>
           </div>
@@ -55,12 +58,14 @@
             <img id="outputImg" src="" />
           </div>
           <input type="button" value="Estimate Pose" id="processImage" />
+          <div id="loader"></div>
           <input type="button" value="Clear" id="clearImage" />
         </div>
       </div>
     </div>
     <script>
       let uploaded = false;
+      let loader = document.getElementById("loader");
       let outputMsg = document.getElementById("outputMsg");
 
       document
@@ -121,9 +126,11 @@
       }
 
       function processImage(e) {
+        loader.style.display = "flex";
         var timestamp = new Date().getTime();
         console.log(document.getElementById("outputImg").src);
         if (!uploaded) {
+          loader.style.display = "none";
           outputMsg.innerHTML += `<div class="outputText">//Please upload an image first.</div>`;
           return;
         }
@@ -143,15 +150,12 @@
               document.getElementById("outputImg").src =
                 "./keypoints/upload/processedImage.png?t=" + timestamp;
             }
+            loader.style.display = "none";
           });
       }
     </script>
     <footer>
-      <a id="main-page-link" href="" onclick="goBack()"
-        ><p>Back to Main Page</p></a
-      >
-      <p>Python script modified and adapted from <a href="https://github.com/stefanopini/simple-HigherHRNet">SimpleHigherHRNet</a>, which is an implementation of the <a href="https://github.com/HRNet/HigherHRNet-Human-Pose-Estimation">HigherHRNet</a> pose estimation method. Released under MIT Liscense.</p>
-      
+      <p id="credits">Python script modified and adapted from <a href="https://github.com/stefanopini/simple-HigherHRNet">SimpleHigherHRNet</a>, which is an implementation of the <a href="https://github.com/HRNet/HigherHRNet-Human-Pose-Estimation">HigherHRNet</a> pose estimation method. Released under MIT License.</p>
     </footer>
   </body>
 </html>
