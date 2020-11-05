@@ -13,30 +13,34 @@ router.get("/keypoints", function (req, res) {
 
 router.post("/keypoints/upload",upload.single("upfile"), (req, res) => {
     console.log(__dirname)
-      const tempPath = req.file.path;
-      const targetPath = path.join(__dirname, "../uploads/rawImage.png");
-      console.log("tempPath: ", tempPath, "targetPath: ", targetPath)
+    if (!req.file) {
+      return res
+        .status(403)
+        .json("No files detected!");
+    }
+    const tempPath = req.file.path;
+    const targetPath = path.join(__dirname, "../uploads/rawImage.png");
+    //console.log("tempPath: ", tempPath, "targetPath: ", targetPath)
   
-      if (path.extname(req.file.originalname).toLowerCase() === ".png" || path.extname(req.file.originalname).toLowerCase() === ".jpg") {
-        fs.rename(tempPath, targetPath, err => {
-          if (err) throw err;
+    if (path.extname(req.file.originalname).toLowerCase() === ".jpeg" || path.extname(req.file.originalname).toLowerCase() === ".png" || path.extname(req.file.originalname).toLowerCase() === ".jpg") {
+       fs.rename(tempPath, targetPath, err => {
+        if (err) throw err;
   
-          res
-            .status(200)
-            .json("File uploaded!");
-        });
-      } else {
-        fs.unlink(tempPath, err => {
-          if (err) throw err;
-          res
-          .status(403)
-          .json("Only .png and .jpg files are allowed!");
+        res
+          .status(200)
+          .json("File uploaded!");
+      });
+     } 
+     else {
+      fs.unlink(tempPath, err => {
+        if (err) throw err;
+        res
+        .status(403)
+        .json("Only .png, .jpg and .jpeg files are allowed!");
       });
     }
     
-  }
-
-);
+});
 
 router.get("/keypoints/upload/rawImage.png", (req, res) => {
     targetPath = path.join(__dirname, "../uploads/rawImage.png");

@@ -1,98 +1,157 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Keypoints</title>
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="keypoints.css" rel="stylesheet" type="text/css" />
 
-   <head>
-      <title>Keypoints</title>
-      <link rel="shortcut icon" href="" type="image/x-icon"/>
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-      <link href="" rel="stylesheet" type="text/css">
+    <script>
+      function goBack() {
+        document.getElementById("main-page-link").href =
+          "http://" + window.location.hostname + ":" + window.location.port;
+      }
+    </script>
+  </head>
 
-      <script>
-         function goBack() {
-           document.getElementById("main-page-link").href = "http://"+window.location.hostname+":"+window.location.port;
-         }
-     </script>
-   </head>
-
-   <body>
-    
-     <div id="app">
-      <h1 id="title">Keypoints</h1>
+  <body>
+    <div id="app">
+      <h1 id="title">Pose Estimation with HigherHRNet</h1>
       <div id="container">
-        <div id="input-container">
-            <div id="keypoints-tile" class="microservice-tile">
-                <h3 class="title">Keypoints:</h3>
-                <p>Please Upload a File ...</p>
-                <div class="view">
-                  <h4 id="output"></h4>
-                  <form
-                    id="postImage"
-                    enctype="multipart/form-data"
-                    method="POST"
-                    action="/keypoints/upload"
-                  >
-                    <input id="inputfield" type="file" name="upfile" />
-                    <input id="button" type="submit" value="Upload Image" />
-                  </form>
-                </div>
-              </div>
+        <div id="left-container">
+          <div id="input-container">
+            <h2 class="title">File upload:</h2>
+            <p id="instructions">
+              Upload a JPG, PNG or JPEG image of people and click "Estimate
+              Pose" to visualize their keypoints.
+            </p>
+            <div id="view">
+              <form
+                id="postImage"
+                enctype="multipart/form-data"
+                method="POST"
+                action="/keypoints/upload"
+              >
+                <input id="inputfield" type="file" name="upfile" />
+                <input id="button" type="submit" value="Upload Image" />
+              </form>
+            </div>
+          </div>
+          <div id="text-container">
+            <h2>Output Messages:</h2>
+            <div id="outputMsgBox">
+              <div id="outputMsg"></div>
+            </div>
+            <input type="button" value="Clear" id="clearText" />
+          </div>
         </div>
         <div id="output-container">
-        <h1 id="output-title">Output</h1>
-        <div id="outputMsgBox">
-          <input type="button" value="Process" id="processImage" />
-          <div id="outputImgDiv">Output Image
+          <h2 id="output-title">Image:</h2>
+          <div id="outputImgDiv">
             <img id="outputImg" src="" />
           </div>
-          <div id="outputMsg">Output Msg</div>
-        </div>
+          <input type="button" value="Estimate Pose" id="processImage" />
+          <input type="button" value="Clear" id="clearImage" />
         </div>
       </div>
     </div>
-      <script>
-        let outputMsg = document.getElementById('outputMsg')
-        document.getElementById('postImage').addEventListener('submit', postImage)
-        document.getElementById('processImage').addEventListener('click', processImage)
+    <script>
+      let uploaded = false;
+      let outputMsg = document.getElementById("outputMsg");
 
-        function postImage(e) {
-          //console.log(e[0])
-          e.preventDefault();
-          let form = document.getElementById("postImage")
-          let formData = new FormData(form)
-          var timestamp = new Date().getTime(); 
+      document
+        .getElementById("postImage")
+        .addEventListener("submit", postImage);
 
-          fetch("/keypoints/upload", {
-            method:'POST',
-            body:formData
-          })
+      document
+        .getElementById("processImage")
+        .addEventListener("click", processImage);
+
+      document.getElementById("clearText").addEventListener("click", clearText);
+
+      document
+        .getElementById("clearImage")
+        .addEventListener("click", clearImage);
+
+      function postImage(e) {
+        //console.log(e[0])
+        e.preventDefault();
+        uploaded = true;
+        let form = document.getElementById("postImage");
+        let formData = new FormData(form);
+        var timestamp = new Date().getTime();
+        console.log(formData);
+        fetch("/keypoints/upload", {
+          method: "POST",
+          body: formData,
+        })
           .then((res) => res.json())
           .then((data) => {
-            document.getElementById("outputImg").src = "./keypoints/upload/rawImage.png?t=" + timestamp
-            console.log(data)
-          })
-        };
+            if (data == "File uploaded!") {
+              //Timestamp required to get image to update (by giving it a param) if they have same name (its always rawImage)
+              document.getElementById("outputImg").src =
+                "./keypoints/upload/rawImage.png?t=" + timestamp;
+            }
+            outputMsg.innerHTML += `<div class="outputText">//${data}</div>`;
+            if (
+              data == "No file chosen." ||
+              data == "Only .png, .jpg and .jpeg files are allowed!"
+            ) {
+              uploaded = false;
+            }
+            console.log(data);
+          });
+      }
 
-        function processImage(e) {
-            var timestamp = new Date().getTime(); 
-            console.log("processing")
-            e.preventDefault();
-            fetch("/keypoints/process", {
-            method:'GET'
-          })
+      function clearText() {
+        outputMsg.innerHTML = "";
+      }
+
+      function clearImage() {
+        if (!uploaded) {
+          return (outputMsg.innerHTML += `<div class="outputText">//No image to clear.</div>`);
+        }
+        outputMsg.innerHTML += `<div class="outputText">//Image cleared!</div>`;
+        document.getElementById("outputImg").src = "";
+        uploaded = false;
+      }
+
+      function processImage(e) {
+        var timestamp = new Date().getTime();
+        console.log(document.getElementById("outputImg").src);
+        if (!uploaded) {
+          outputMsg.innerHTML += `<div class="outputText">//Please upload an image first.</div>`;
+          return;
+        }
+        console.log("processing");
+        outputMsg.innerHTML += `<div class="outputText">//Processing...please wait...</div>`;
+        e.preventDefault();
+        fetch("/keypoints/process", {
+          method: "GET",
+        })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data)
+            outputMsg.innerHTML += `<div class="outputText">//${data}</div>`;
+            console.log(data);
             const passRegex = RegExp("Python processing done");
             const failRegex = RegExp("No person detected");
             if (passRegex.test(data)) {
-              document.getElementById("outputImg").src = "./keypoints/upload/processedImage.png?t=" + timestamp
+              document.getElementById("outputImg").src =
+                "./keypoints/upload/processedImage.png?t=" + timestamp;
             }
-            
-          })
-        }
+          });
+      }
+    </script>
+    <footer>
+      <a id="main-page-link" href="" onclick="goBack()"
+        ><p>Back to Main Page</p></a
+      >
+      <p>Python script modified and adapted from <a href="https://github.com/stefanopini/simple-HigherHRNet">SimpleHigherHRNet</a>, which is an implementation of the <a href="https://github.com/HRNet/HigherHRNet-Human-Pose-Estimation">HigherHRNet</a> pose estimation method. Released under MIT Liscense.</p>
       
-      </script>
-      <a id="main-page-link" href="" onclick=goBack() ><p>Back to Main Page</p></a>
-   </body>
-
+    </footer>
+  </body>
 </html>

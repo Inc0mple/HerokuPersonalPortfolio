@@ -1051,10 +1051,6 @@
         return boardState;
       }
     solveButton.onclick = function (){
-    //solveButton.onclick = function() {
-      //Start timing
-      
-
       //Return error if input invalid
       if (textArea.value.length != 81) {
         return (document.getElementById("error-msg").innerHTML =
@@ -1065,13 +1061,16 @@
       document.getElementById("container").style.display = "none";
       document.getElementById("loader").style.display = "flex";
       
+      //SET TIMER
       setTimeout(function() {
+        //Start timing
         const t0 = performance.now(); 
         
         //Run Solver
         let solution = solveSudoku()
 
         //Error Handling. Uncomment loader once loader issue fixed
+
         if (!solution) {
           //document.getElementById("loader").style.display = "none";
           //document.getElementById("container").style.display = "flex"
@@ -1097,10 +1096,12 @@
         //Hide Loader. Uncomment once loader issue fixed
         document.getElementById("loader").style.display = "none";
         document.getElementById("container").style.display = "flex";
+
+        //Stop timing and show performance
         const t1 = performance.now();
         document.getElementById("error-msg").innerHTML = `<span style='color: lightgreen'>Solved in ${(t1-t0 > 50)?(t1 - t0).toFixed(3):"less than 50"} milliseconds!</span>`;
       }, 50)
-      //Stop timing and show performance
+      
       
       
     };

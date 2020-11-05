@@ -1,0 +1,243 @@
+#app {
+    min-width: 70rem;
+    background-color: rgb(51, 49, 83);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin:1rem;
+    border-radius: 2px;
+    font-size: large;
+    
+}
+
+body {
+    background-color: gainsboro;
+}
+
+
+#title {
+    width: auto;
+    margin:auto;
+    text-align: center;
+    padding:1rem;
+    color: white;
+    background-color: rgba(31, 31, 31, 0.712);
+}
+
+h1, h2, h3 {
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    color: white;
+    width:100%;
+    background-color: rgba(31, 31, 31, 0.712);
+}
+
+input{
+    font-size: large;
+}
+
+#processImage {
+    width: 90%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 6px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+input[type=submit] {
+    width: 90%;
+    background-color: dodgerblue;
+    color: white;
+    padding: 6px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+#clearImage, #clearText {
+    width: 90%;
+    background-color: firebrick;
+    color: white;
+    padding: 6px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#clearText{
+    bottom:20px;
+}
+
+
+#processImage:hover {
+    background-color: rgb(22, 113, 204);
+}
+
+#processImage:hover {
+    background-color: #3b8b3e;
+}
+
+#clearImage:hover, #clearText:hover {
+    background-color: rgb(138, 1, 1);
+
+}
+
+#processImage:active {
+    background-color: #255727;
+    transform: translateY(2px);
+}
+
+
+input[type=submit]:active {
+    background-color: rgb(2, 65, 128);
+    transform: translateY(2px);
+}
+
+
+
+#clearImage:active, #clearText:active {
+    background-color: rgb(71, 0, 0);
+    transform: translateY(2px);
+}
+
+
+
+
+#container {
+    display:flex;
+    flex-direction: row;
+    justify-content: start;
+    padding:0rem 1rem 1rem 1rem;
+}
+
+#left-container {
+    display: flex;
+    flex-direction: column;
+}
+
+form{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+
+#input-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(156, 156, 156);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin:1rem;
+    width:23rem;
+    border-radius: 2px;
+
+}
+
+#text-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(156, 156, 156);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin:1rem;
+    border-radius: 2px;
+    height: 100%;
+}
+
+#output-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(156, 156, 156);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin:1rem;
+    width: 100%;
+    border-radius: 2px;
+
+}
+
+#instructions{
+    margin: 1rem;
+}
+
+#outputMsgBox {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 2px;
+    background-color: white;
+    min-height: 60%;
+    width: 90%;
+    margin:10px;
+    height: 100%;
+}
+
+#outputMsg {
+    padding:1rem;
+}
+
+#outputImgDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin:1rem;
+    border-radius: 2px;
+    min-height: 600px;
+    min-width: 70%;
+}
+
+#outputImg{
+    margin:2rem;
+    max-width: 80%;
+    max-height: 60vh;
+}
+
+footer{
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin:1rem;
+    border-radius: 2px;
+    min-width: 70rem;
+}
+
+@media only screen and (max-width: 800px) {
+    #container  {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #output-container,#text-container,#input-container{
+        width: 100%;
+
+    }
+
+    #left-container {
+        width: 100%;
+        margin-right:30px;
+    }
+
+    #app {
+        min-width: 20rem;
+        width:auto;
+        margin:0;
+    }
+
+    footer{
+        min-width: 20rem;
+        margin:0;
+    } 
+}
