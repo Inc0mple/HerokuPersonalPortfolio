@@ -1,1 +1,1 @@
-web: pip install -r requirements.txt && npm start
+web: pip install -r requirements.txt && node server.js
