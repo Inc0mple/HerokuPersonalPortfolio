@@ -1,2 +1,2 @@
-*.png
-*.jpg
+/uploads/processedImage.png
+/uploads/rawImage.png

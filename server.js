@@ -82,7 +82,7 @@ app.use(bodyParser.json());
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/views/portfolio.html");
+  res.sendFile(__dirname + "/views/portfolio2.html");
 });
 
 
