@@ -43,13 +43,13 @@
   <body>
     <nav id="navbar" class="backgroundDiv">
       <div id="navNameDiv" class="navDiv">
-        <a id="navName" href="https://inc0mple-portfolio.herokuapp.com/">Bryan Tan (Chen Zhengyu)</a>
+        <a class="selfLink" id="navName" href="https://inc0mple-portfolio.herokuapp.com/">Bryan Tan (Chen Zhengyu)</a>
       </div>
       <div id="navButtonDiv" class="navDiv">
-        <a class="navButton" href="#about">About</a>
-        <a class="navButton" href="#skills">Skills</a>
-        <a class="navButton" href="#portfolio">Portfolio</a>
-        <a class="navButton" href="#contact">Contact</a>
+        <a class="navButton selfLink" href="#about">About</a>
+        <a class="navButton selfLink" href="#skills">Skills</a>
+        <a class="navButton selfLink" href="#portfolio">Portfolio</a>
+        <a class="navButton selfLink" href="#contact">Contact</a>
       </div>
     </nav>
 
@@ -175,7 +175,7 @@
           <div class="projectBox frontend">
             <a class="projectLink" href="https://codepen.io/Incomple_/full/OJNNpgN" target="_blank"><img class="projectImg" src="https://codepen.io/Incomple_/pen/OJNNpgN/image/large.png"></img></a>
             <h3 class="projectTitle">Technical Documentation</h3>
-            <p class="projectText">Text-heavy website incorporating responsive design (Auto-adjusting elements).</p>
+            <p class="projectText">Text-heavy website incorporating responsive design (auto-adjusting elements, media queries etc.).</p>
             <a class="projectButtonLink" href="https://codepen.io/Incomple_/full/OJNNpgN"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
           <div class="projectBox frontend javascript">
@@ -211,13 +211,13 @@
           <div class="projectBox frontend javascript d3">
             <a class="projectLink" href="https://codepen.io/Incomple_/full/zYqjgbB" target="_blank"><img class="projectImg" src="https://codepen.io/Incomple_/pen/zYqjgbB/image/large.png"></img></a>
             <h3 class="projectTitle">D3 Bar Chart</h3>
-            <p class="projectText">Data visualisation project. Plots the United State's Gross Domestic Product from 1947 - 2015</p>
+            <p class="projectText">Data visualisation project. Plots the United State's Gross Domestic Product from 1947 - 2015.</p>
             <a class="projectButtonLink" href="https://codepen.io/Incomple_/full/zYqjgbB"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
           <div class="projectBox frontend javascript d3">
             <a class="projectLink" href="https://codepen.io/Incomple_/full/KKzELag" target="_blank"><img class="projectImg" src="https://codepen.io/Incomple_/pen/KKzELag/image/large.png"></img></a>
             <h3 class="projectTitle">D3 Scatterplot</h3>
-            <p class="projectText">Data visualisation project. Highlights cyclists with doping allegations between 1994 - 2015</p>
+            <p class="projectText">Data visualisation project. Highlights cyclists with doping allegations between 1994 - 2015.</p>
             <a class="projectButtonLink" href="https://codepen.io/Incomple_/full/KKzELag"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
           <div class="projectBox frontend javascript d3">
@@ -262,6 +262,12 @@
             <p class="projectText">Uses a trained Neutral Network to visualise and estimate the pose of humans. Works best with full-body images of a few people.</p>
             <a class="projectButtonLink" href="/keypoints"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
+          <div class="projectBox python">
+            <a class="projectLink" href="https://repl.it/@BryanTan3/DungeonCrawler1DProject" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/dungeonCrawlBackground.png"></img></a>
+            <h3 class="projectTitle">Dungeon Crawler</h3>
+            <p class="projectText">Text-based Dungeon Crawler game made with Python 3. Hosted on repl.it.</p>
+            <a class="projectButtonLink" href="https://repl.it/@BryanTan3/DungeonCrawler1DProject"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
+          </div>
         </div>
       </div>
     </section>                      
@@ -290,7 +296,7 @@
             <a class="iconLink" href="https://us04web.zoom.us/j/5631455771?pwd=dkYzM0ZzWCsyZzk0bmV6RndZRjFiZz09" target="_blank"><img class="contactIcon" src="assets/zoom.png"></img></a>
             <a class="iconLink" href="https://discord.gg/2JGrwbdCx9" target="_blank"><img class="contactIcon" src="assets/discord.png"></img></a>
           </div>
-          <a id="backToTopLink" href=#about ><div id="backToTop" class="footerTopText"><img class="upArrowIcon" src="assets/greyUpArrow.png"></img>Back to Top</div></a>
+          <a id="backToTopLink" href=#about class="selfLink" ><div id="backToTop" class="footerTopText"><img class="upArrowIcon" src="assets/greyUpArrow.png"></img>Back to Top</div></a>
         </div>
       </div>
       <div id="footerBottom">
@@ -344,7 +350,7 @@
       }
 
     // Smooth scrolling code below courtesy of https://css-tricks.com/snippets/jquery/smooth-scrolling/
-    const links = document.querySelectorAll("a");
+    const links = document.querySelectorAll(".selfLink");
  
     for (const link of links) {
       link.addEventListener("click", clickHandler);
