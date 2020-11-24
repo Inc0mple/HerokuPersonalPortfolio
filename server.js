@@ -150,6 +150,32 @@ app.get("/keypoints/upload/rawImage.png",keypoints);
 app.get("/keypoints/upload/processedImage.png",keypoints);
 app.get("/keypoints/process",keypoints);
 
+//Pings website every 20mins to prevent herokuapp from sleeping. Code by DubbyTT from https://stackoverflow.com/questions/5480337/easy-way-to-prevent-heroku-idling
+var http = require('http'); //importing http
+
+function startKeepAlive() {
+    setInterval(function() {
+        var options = {
+            host: 'https://inc0mple-portfolio.herokuapp.com/',
+            port: 80,
+            path: '/'
+        };
+        http.get(options, function(res) {
+            res.on('data', function(chunk) {
+                try {
+                    // optional logging... disable after it's working
+                    console.log("HEROKU RESPONSE: " + chunk);
+                } catch (err) {
+                    console.log(err.message);
+                }
+            });
+        }).on('error', function(err) {
+            console.log("Error: " + err.message);
+        });
+    }, 20 * 60 * 1000); // load every 20 minutes
+}
+
+startKeepAlive();
 
 // listen for requests :)
 let listener = app.listen(port, function () {
