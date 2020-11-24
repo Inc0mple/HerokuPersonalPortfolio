@@ -441,8 +441,11 @@ footer {
     transform: translateY(4px);
 }
 
-
-
+#hitTracker {
+    height:1rem;
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
 
 #fccIcon {
     height:25px;
