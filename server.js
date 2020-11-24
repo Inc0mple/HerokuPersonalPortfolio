@@ -156,7 +156,7 @@ var http = require('http'); //importing http
 function startKeepAlive() {
     setInterval(function() {
         var options = {
-            host: 'https://inc0mple-portfolio.herokuapp.com/',
+            host: 'http://www.incomple.technology/',
             port: 80,
             path: '/'
         };
