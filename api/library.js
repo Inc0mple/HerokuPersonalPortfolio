@@ -1,10 +1,7 @@
 "use strict";
 
-const mongo = require("mongodb");
-const MongoClient = require("mongodb").MongoClient;
 const mongoose = require("mongoose");
 const ObjectId = require("mongodb").ObjectId;
-const bodyParser = require("body-parser");
 const express = require("express");
 const router = express.Router();
 
@@ -67,7 +64,7 @@ router
 
   .delete(function (req, res) {
     //if successful response will be 'complete delete successful'
-    Books.deleteMany({}).then(function (result) {
+    Books.deleteMany({}).then(function () {
       console.log("deleted everything :(");
       return res.send("complete delete successful");
     });

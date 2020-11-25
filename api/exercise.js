@@ -1,30 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const mongo = require("mongodb");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser"); //for shorturl
-
 const Schema = mongoose.Schema;
 const db_uri =
   "mongodb+srv://Incomple_:Overspleen@trainingcluster.s2foa.mongodb.net/shorturlDB?retryWrites=true&w=majority";
 
 mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fr", "Sat"];
 
 const Profile = mongoose.model(
   "Profile",
@@ -174,7 +155,7 @@ router.get("/exercise/log", function (req, res) {
         }
         console.log(result.log);
         let reorderedLog = []; //Re-ordered the position of keys in the log for formatting purposes
-        for (i in resultLog) {
+        for (let i in resultLog) {
           let newEntry = {};
           newEntry.description = resultLog[i].description;
           newEntry.duration = resultLog[i].duration;
@@ -198,7 +179,7 @@ router.get("/exercise/log", function (req, res) {
 
 router.delete("/exercise/users", function (req, res) {
   //if successful response will be 'complete delete successful'
-  Profile.deleteMany({}).then(function (result) {
+  Profile.deleteMany({}).then(function () {
     console.log("deleted everything :(");
     return res.json("All users deleted");
   });

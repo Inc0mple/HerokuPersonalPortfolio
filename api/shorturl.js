@@ -1,13 +1,12 @@
-const mongo = require('mongodb');
+
 const express = require("express");
 const router = express.Router();
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser'); //for shorturl
+
 const shortid = require('shortid'); //for shorturl
 
 const Schema  = mongoose.Schema;
 
-const db_uri = "mongodb+srv://Incomple_:Overspleen@trainingcluster.s2foa.mongodb.net/shorturlDB?retryWrites=true&w=majority"
 
 
 

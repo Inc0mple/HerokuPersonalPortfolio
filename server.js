@@ -4,12 +4,9 @@
 
 // init project
 const express = require("express");
-const mongo = require("mongodb");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser"); //for shorturl
-const shortid = require("shortid"); //for shorturl
-const multer = require("multer"); //for file metadata
-const fs = require("fs"); //for file metadata
+
 
 
 const timestamp = require("./api/timestamp");
@@ -27,7 +24,7 @@ const americanToBritishSpelling = require("./translations/american-to-british-sp
 const americanToBritishTitles= require("./translations/american-to-british-titles")
 const britishOnly = require("./translations/british-only")
 */
-const Schema = mongoose.Schema;
+
 console.log(process.argv)
 
 const app = express();
@@ -42,9 +39,7 @@ mongoose.connect(db_uri, { useNewUrlParser: true, useUnifiedTopology: true });
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC
 const cors = require("cors");
-const { generate } = require("shortid");
-const { json } = require("body-parser");
-const ConvertHandler = require("./api/convertHandler");
+
 app.use(cors({ optionsSuccessStatus: 200 })); // some legacy browsers choke on 204
 
 // http://expressjs.com/en/starter/static-files.html
@@ -116,7 +111,7 @@ app.get("/microservices", microservices);
 
 app.post("/fileanalyse/upload", microservices);
 
-
+/// The 
 //**********Start of Exercise Tracker API**********
 
 app.get("/exercise", exercise);

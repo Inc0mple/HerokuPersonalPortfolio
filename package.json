@@ -15,7 +15,9 @@
 		"multer": "^1.4.2",
 		"shortid": "^2.2.15"
 	},
-	"devDependencies": {},
+	"devDependencies": {
+		"eslint": "^7.14.0"
+	},
 	"engines": {
 		"node": "12.x"
 	},

@@ -1,4 +1,3 @@
-const mongo = require('mongodb');
 const path = require("path");
 const express = require("express");
 const router = express.Router();
@@ -43,7 +42,7 @@ router.post("/keypoints/upload",upload.single("upfile"), (req, res) => {
 });
 
 router.get("/keypoints/upload/rawImage.png", (req, res) => {
-    targetPath = path.join(__dirname, "../uploads/rawImage.png");
+    const targetPath = path.join(__dirname, "../uploads/rawImage.png");
     res.sendFile(targetPath);
 });
 
@@ -80,7 +79,7 @@ router.get("/keypoints/process", (req, res) => {
 });
 
 router.get("/keypoints/upload/processedImage.png", (req, res) => {
-  targetPath = path.join(__dirname, "../uploads/processedImage.png");
+  const targetPath = path.join(__dirname, "../uploads/processedImage.png");
   res.sendFile(targetPath);
 });
 
