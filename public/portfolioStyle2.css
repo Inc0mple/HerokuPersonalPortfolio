@@ -366,8 +366,8 @@ footer {
 #contactIconsContainer {
     display: flex;
     width:auto;
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
     
 }
 
@@ -483,14 +483,30 @@ footer {
 @media only screen and (max-width: 900px), only screen and (max-device-width: 768px) and (orientation: portrait) {
 
     .contactIcon {
-        max-height:40px;
+        width:auto;
+        max-width: 100%;
+        height: auto;
+        margin:auto;
+    }
+    .contactIconLink {
+        width:auto;
+        height:auto;
         margin:10px;
     }
+
 
     .footerTopText{
         margin:10px;
     }
 
+    #contactIconsContainer {
+        display: flex;
+        height: auto;
+        width:auto;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        
+    }
     #footerTop {
         font-size: 15px;
         color: #C5C6C7;
