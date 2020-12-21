@@ -7,8 +7,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser"); //for shorturl
 
-
-
 const timestamp = require("./api/timestamp");
 const requestheaderparser = require("./api/requestheaderparser");
 const shorturl = require("./api/shorturl");
@@ -16,8 +14,8 @@ const microservices = require("./api/microservices");
 const exercise = require("./api/exercise");
 const sudoku = require("./api/sudoku");
 const library = require("./api/library");
-const converter = require("./api/convertHandler")
-const keypoints = require("./api/keypoints")
+const converter = require("./api/convertHandler");
+const keypoints = require("./api/keypoints");
 
 /*
 const americanToBritishSpelling = require("./translations/american-to-british-spelling")
@@ -25,7 +23,7 @@ const americanToBritishTitles= require("./translations/american-to-british-title
 const britishOnly = require("./translations/british-only")
 */
 
-console.log(process.argv)
+console.log(process.argv);
 
 const app = express();
 const db_uri =
@@ -55,11 +53,17 @@ app.use(function (req, res, next) {
     "-" +
     current_datetime.getDate() +
     " " +
-    (current_datetime.getHours() > 9 ? current_datetime.getHours() : "0" + current_datetime.getHours()) +
+    (current_datetime.getHours() > 9
+      ? current_datetime.getHours()
+      : "0" + current_datetime.getHours()) +
     ":" +
-    (current_datetime.getMinutes() > 9 ? current_datetime.getMinutes() : "0" + current_datetime.getMinutes()) +
+    (current_datetime.getMinutes() > 9
+      ? current_datetime.getMinutes()
+      : "0" + current_datetime.getMinutes()) +
     ":" +
-    (current_datetime.getSeconds() > 9 ? current_datetime.getSeconds() : "0" + current_datetime.getSeconds());
+    (current_datetime.getSeconds() > 9
+      ? current_datetime.getSeconds()
+      : "0" + current_datetime.getSeconds());
   let method = req.method;
   let url = req.url;
   let status = res.statusCode;
@@ -81,7 +85,6 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/views/portfolio2.html");
 });
 
-
 app.get("/index", function (req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
@@ -90,18 +93,15 @@ app.get("/index", function (req, res) {
 app.get("/timestamp", timestamp);
 app.get("/api/timestamp/:date_string?", timestamp);
 
-
 //**********Start of Request Header Parser API**********
 app.get("/requestheaderparser", requestheaderparser);
 app.get("/api/whoami", requestheaderparser);
-
 
 //**********Start of URL Shortener API**********
 
 app.get("/shorturl", shorturl);
 app.post("/api/shorturl/new", shorturl);
 app.get("/api/shorturl/:shortid", shorturl);
-
 
 //**********Start of Microservices**********
 
@@ -111,7 +111,7 @@ app.get("/microservices", microservices);
 
 app.post("/fileanalyse/upload", microservices);
 
-/// The 
+/// The
 //**********Start of Exercise Tracker API**********
 
 app.get("/exercise", exercise);
@@ -123,11 +123,11 @@ app.delete("/exercise/users", exercise);
 
 //**********Start of Sudoku**********
 
-app.get("/sudoku",sudoku);
+app.get("/sudoku", sudoku);
 
 //**********Start of Library**********
 
-app.get("/library",library);
+app.get("/library", library);
 app.get("/api/books", library);
 app.get("/api/books/:id", library);
 app.post("/api/books", library);
@@ -136,41 +136,15 @@ app.delete("/api/books", library);
 app.delete("/api/books/:id", library);
 
 //**********Start of Converter**********
-app.get("/api/convert",converter);
+app.get("/api/convert", converter);
 
 //**********Start of Keypoints**********
-app.get("/keypoints",keypoints);
-app.post("/keypoints/upload",keypoints);
-app.get("/keypoints/upload/rawImage.png",keypoints);
-app.get("/keypoints/upload/processedImage.png",keypoints);
-app.get("/keypoints/process",keypoints);
+app.get("/keypoints", keypoints);
+app.post("/keypoints/upload", keypoints);
+app.get("/keypoints/upload/rawImage.png", keypoints);
+app.get("/keypoints/upload/processedImage.png", keypoints);
+app.get("/keypoints/process", keypoints);
 
-//Pings website every 20mins to prevent herokuapp from sleeping. Code by DubbyTT from https://stackoverflow.com/questions/5480337/easy-way-to-prevent-heroku-idling
-var http = require('http'); //importing http
-
-function startKeepAlive() {
-    setInterval(function() {
-        var options = {
-            host: 'http://www.incomple.technology/',
-            port: 80,
-            path: '/'
-        };
-        http.get(options, function(res) {
-            res.on('data', function(chunk) {
-                try {
-                    // optional logging... disable after it's working
-                    console.log("HEROKU RESPONSE: " + chunk);
-                } catch (err) {
-                    console.log(err.message);
-                }
-            });
-        }).on('error', function(err) {
-            console.log("Error: " + err.message);
-        });
-    }, 20 * 60 * 1000); // load every 20 minutes
-}
-
-startKeepAlive();
 
 // listen for requests :)
 let listener = app.listen(port, function () {
