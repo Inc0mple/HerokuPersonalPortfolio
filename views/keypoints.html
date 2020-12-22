@@ -143,7 +143,8 @@
           .then((res) => res.text())
           .then(data => {
             if (data.includes("person") || data.includes("people")) {
-              data = data.replace(/\\r\\n/g,"")
+              data = data.replace(/\\r/g,"")
+              data = data.replace(/\\n/g,"")
               outputMsg.innerHTML += `<div class="outputText">//${data}</div>`;
               console.log(data);
               const passRegex = RegExp("Python processing done");
