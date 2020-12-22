@@ -142,7 +142,7 @@
         })
           .then((res) => res.text())
           .then(data => {
-            if (data.includes("person")) {
+            if (data.includes("person") || data.includes("people")) {
               data = data.replace(/\\r\\n/g,"")
               outputMsg.innerHTML += `<div class="outputText">//${data}</div>`;
               console.log(data);
@@ -156,6 +156,13 @@
             }
             else {
               console.log("time to handle heroku errors")
+              outputMsg.innerHTML += `<div class="outputText">//${"Processing taking longer than expected, likely due to heroku's memory being exceeded. Waiting for 6 more seconds..."}</div>`;
+              setTimeout(function() {
+                outputMsg.innerHTML += `<div class="outputText">//${"Timeout. Displaying result regardless of completion. Run again if no new overlay shown."}</div>`; 
+                loader.style.display = "none";
+                document.getElementById("outputImg").src = "./keypoints/upload/processedImage.png?t=" + timestamp;
+              }, 6000);
+              /*
               fetch("/keypoints/process", {
                 method: "GET",
             }).then((res) => res.text())
@@ -172,7 +179,7 @@
               }
               loader.style.display = "none";
             })
-            
+            */
 
             }
             
