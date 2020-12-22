@@ -59,3 +59,4 @@ def processImage(inputImg):
 
 initialiseModel()
 processImage(sys.argv[1])
+model = None
