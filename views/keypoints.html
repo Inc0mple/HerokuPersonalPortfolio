@@ -141,17 +141,40 @@
           method: "GET",
         })
           .then((res) => res.text())
-          .then((data) => {
-            data = data.replace(/\\r\\n/g,"")
-            outputMsg.innerHTML += `<div class="outputText">//${data}</div>`;
-            console.log(data);
-            const passRegex = RegExp("Python processing done");
-            const failRegex = RegExp("No person detected");
-            if (passRegex.test(data)) {
-              document.getElementById("outputImg").src =
-                "./keypoints/upload/processedImage.png?t=" + timestamp;
+          .then(data => {
+            if (data.includes("person")) {
+              data = data.replace(/\\r\\n/g,"")
+              outputMsg.innerHTML += `<div class="outputText">//${data}</div>`;
+              console.log(data);
+              const passRegex = RegExp("Python processing done");
+              const failRegex = RegExp("No person detected");
+              if (passRegex.test(data)) {
+                document.getElementById("outputImg").src =
+                  "./keypoints/upload/processedImage.png?t=" + timestamp;
+              }
+              loader.style.display = "none";
             }
-            loader.style.display = "none";
+            else {
+              console.log("time to handle heroku errors")
+              fetch("/keypoints/process", {
+                method: "GET",
+            }).then((res) => res.text())
+            .then(data => {
+              data = data.replace(/\\r\\n/g,"")
+              outputMsg.innerHTML += `<div class="outputText">//${data}</div>`;
+              console.log(data);
+              const passRegex = RegExp("Python processing done");
+              const failRegex = RegExp("No person detected");
+              if (passRegex.test(data)) {
+                document.getElementById("outputImg").src =
+                  "./keypoints/upload/processedImage.png?t=" + timestamp;
+              }
+              loader.style.display = "none";
+            })
+            
+
+            }
+            
           });
       }
     </script>
