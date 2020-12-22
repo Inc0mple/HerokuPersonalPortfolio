@@ -160,6 +160,7 @@
                 method: "GET",
             }).then((res) => res.text())
             .then(data => {
+              console.log("entering second fetch request's reponse")
               data = data.replace(/\\r\\n/g,"")
               outputMsg.innerHTML += `<div class="outputText">//${data}</div>`;
               console.log(data);
