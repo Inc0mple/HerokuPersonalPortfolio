@@ -156,16 +156,16 @@
             }
             else {
               console.log("time to handle heroku errors")
-              outputMsg.innerHTML += `<div class="outputText">//"Heroku's output:"${data}</div>`;
+              console.log(data)
               outputMsg.innerHTML += `<div class="outputText">//${"Processing taking longer than expected."}</div>`;
               outputMsg.innerHTML += `<div class="outputText">//${"Likely due to heroku's memory being exceeded."}</div>`;
-              outputMsg.innerHTML += `<div class="outputText">//${"Waiting for 10 more seconds..."}</div>`;
+              outputMsg.innerHTML += `<div class="outputText">//${"Waiting for 20 more seconds..."}</div>`;
               setTimeout(function() {
                 outputMsg.innerHTML += `<div class="outputText">//${"Timeout. Displaying result regardless of completion."}</div>`; 
                 outputMsg.innerHTML += `<div class="outputText">//${"Run again if no new overlay shown."}</div>`; 
                 loader.style.display = "none";
                 document.getElementById("outputImg").src = "./keypoints/upload/processedImage.png?t=" + timestamp;
-              }, 10000);
+              }, 20000);
               /*
               fetch("/keypoints/process", {
                 method: "GET",
@@ -187,6 +187,9 @@
 
             }
             
+          })
+          .catch((error) => {
+            console.error('Error:', error);
           });
       }
     </script>
