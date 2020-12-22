@@ -53,6 +53,7 @@ video{
     width:100%;
     overflow: hidden;
     object-fit: cover;
+    background-color: #1F2833;
 }
 
 #about {
