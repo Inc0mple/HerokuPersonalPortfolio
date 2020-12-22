@@ -142,6 +142,7 @@
         })
           .then((res) => res.text())
           .then((data) => {
+            data = data.replace(/\\r\\n/g,"")
             outputMsg.innerHTML += `<div class="outputText">//${data}</div>`;
             console.log(data);
             const passRegex = RegExp("Python processing done");
