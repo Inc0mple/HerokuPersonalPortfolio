@@ -17,7 +17,16 @@
    <body>
     
      <div id="app">
-      <h1 id="title">Exercise Tracker</h1>
+      <h1 id="title">Exercise Tracker Demo</h1>
+      <div id="instructionsContainer">
+        <h2>Instructions:</h2>
+        <ol>
+          <li>Create new user</li>
+          <li>Copy user ID from output container</li>
+          <li>Paste user ID in respective inputs to post and get exercise logs</li>
+          <li>Use 'Get all users' admin function to retrieve lost user ID</li>
+        </ol>
+      </div>
       <div id="container">
         <div id="input-container">
           <form class="form" id="postUser" action="/exercise/new-user" method="post">
@@ -32,16 +41,16 @@
             <input id="uid" type="text" name="userId" placeholder="userId (required)">
             <input id="desc" type="text" name="description" placeholder="description (required)">
             <input id="dur" type="text" name="duration" placeholder="duration in mins. (required)">
-            <input id="dat" type="text" name="date" placeholder="date (yyyy-mm-dd)">
+            <input id="dat" type="text" name="date" placeholder="date (yyyy-mm-dd) (optional)">
             <input type="submit" value="Submit">
           </form>
           <form class="form" id="getExercise" action="/exercise/log" method="get">
             <h3 class="input-details">Get Exercise Log</h3>
             <p class="input-details"><code>GET exercise/log</code></p>
             <input id="uid2" type="text" name="userId" placeholder="userId (required)">
-            <input id="from" type="text" name="from" placeholder="from (yyyy-mm-dd)">
-            <input id="to" type="text" name="to" placeholder="to (yyyy-mm-dd)">
-            <input id="limit" type="text" name="limit" placeholder="number">
+            <input id="from" type="text" name="from" placeholder="from (yyyy-mm-dd) (optional)">
+            <input id="to" type="text" name="to" placeholder="to (yyyy-mm-dd) (optional)">
+            <input id="limit" type="text" name="limit" placeholder="max logs displayed (optional)">
             <input type="submit" value="Submit">
           </form>
           <div class="form">

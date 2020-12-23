@@ -1,172 +1,179 @@
 * {
-  font-size: 1.10rem;
+  font-size: 1.1rem;
 }
 
 body {
-    background-color: #ccc;
+  background-color: #ccc;
 }
 
-#title{
-    text-align: center;
-    padding-top: 1rem;
-    font-size: 2rem;
+#title {
+  text-align: center;
+  padding-top: 1rem;
+  font-size: 2rem;
 }
 
 #app {
-    background-color: darkslategrey;
-    color: rgb(226, 226, 226);
-    height: 100%;
-    width:auto;
-    min-width: 950px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 5px;
+  background-color: darkslategrey;
+  color: rgb(226, 226, 226);
+  height: 100%;
+  width: auto;
+  min-width: 950px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
 }
 
 #container {
-    display: flex;
+  display: flex;
 }
 
+#instructionsContainer {
+  display: flex;
+  margin-left: 2rem;
+}
 
 #input-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background-color: rgb(156, 156, 156);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin:20px;
-    border-radius: 5px;
-    width: 50%;
-    min-width: 400px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgb(156, 156, 156);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 20px;
+  border-radius: 5px;
+  width: 50%;
+  min-width: 400px;
 }
 
-
 .form {
-    background-color: rgb(41, 40, 40);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 5px;
-    height:auto;
-    min-width: 165px;
-    margin:10px;
-    padding:10px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+  background-color: rgb(41, 40, 40);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  height: auto;
+  min-width: 165px;
+  margin: 10px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 input {
-    margin:0px;
-    padding:0px;
-    width:80%;
-    min-width: 10rem;
-    max-width: 20rem;
+  margin: 0px;
+  padding: 0px;
+  width: 80%;
+  min-width: 10rem;
+  max-width: 20rem;
 }
 
-input[type=text]{
-    width: 100%;
-    padding: 6px 10px;
-    margin: 4px 0;
-    display: inline-block;
-    border: 1px solid rgb(226, 226, 226);
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
+input[type="text"] {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
-  input[type=submit],input[type=button] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 6px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  input[type=submit]:hover,input[type=button]:hover {
-    background-color: #45a049;
-  }
+input[type="submit"],
+input[type="button"] {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 6px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-  input[type=submit]:active,input[type=button]:active {
-    background-color: #3e8e41;
-    transform: translateY(2px);
-  }
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  background-color: #45a049;
+}
 
-  .input-details {
-      margin:0.3rem;
-  }
+input[type="submit"]:active,
+input[type="button"]:active {
+  background-color: #3e8e41;
+  transform: translateY(2px);
+}
 
-  #deleteUsers {
-    background-color: firebrick;
-  }
-  #deleteUsers:hover {
-    background-color: rgb(151, 1, 1);
-  }
+.input-details {
+  margin: 0.3rem;
+}
 
-  #deleteUsers:active {
-    background-color: rgb(129, 3, 3);
-    transform: translateY(2px);
-  }
+#deleteUsers {
+  background-color: firebrick;
+}
+#deleteUsers:hover {
+  background-color: rgb(151, 1, 1);
+}
 
-  #getUsers {
-      background-color: dodgerblue;
-  }
+#deleteUsers:active {
+  background-color: rgb(129, 3, 3);
+  transform: translateY(2px);
+}
 
-  #getUsers:hover {
-    background-color: rgb(0, 94, 189);
-  }
+#getUsers {
+  background-color: dodgerblue;
+}
+
+#getUsers:hover {
+  background-color: rgb(0, 94, 189);
+}
 
 #getUsers:active {
-    background-color: rgb(5, 86, 168);
-    transform: translateY(2px);
-  }
+  background-color: rgb(5, 86, 168);
+  transform: translateY(2px);
+}
 
 #main-page-link {
-    text-align: center;
+  text-align: center;
 }
 
 #output-container {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(122, 122, 122);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin:20px;
-    width: 50%;
-    border-radius: 5px;
-    min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(122, 122, 122);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 20px;
+  width: 50%;
+  border-radius: 5px;
+  min-width: 400px;
 }
 
-#output-title{
- text-align: center;
+#output-title {
+  text-align: center;
 }
 
 #outputMsgBox {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 5px;
-    background-color: rgb(41, 40, 40);
-    color:white;
-    height: 100%;
-    margin: 0px 20px 20px 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  background-color: rgb(41, 40, 40);
+  color: white;
+  height: 100%;
+  margin: 0px 20px 20px 20px;
 }
 
 #outputMsg {
-    margin:20px;
+  margin: 20px;
 
-    word-wrap: break-word;
+  word-wrap: break-word;
 }
 
-@media only screen and (max-width: 800px), only screen and (max-device-width: 800px) and (orientation: portrait) {
-  #container  {
+@media only screen and (max-width: 800px),
+  only screen and (max-device-width: 800px) and (orientation: portrait) {
+  #container {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  #app{
+  #app {
     min-width: 650px;
   }
 
-  #input-container, #output-container{
+  #input-container,
+  #output-container {
     min-width: 600px;
   }
-
 }
