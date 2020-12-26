@@ -160,7 +160,7 @@
               console.log(data)
               outputMsg.innerHTML += `<div class="outputText">//${"Processing taking longer than expected."}</div>`;
               outputMsg.innerHTML += `<div class="outputText">//${"Likely due to heroku's memory being exceeded."}</div>`;
-              outputMsg.innerHTML += `<div class="outputText">//${"Waiting for 20 more seconds..."}</div>`;
+              outputMsg.innerHTML += `<div class="outputText">//${"Please wait for 20 more seconds..."}</div>`;
               setTimeout(function() {
                 outputMsg.innerHTML += `<div class="outputText">//${"Timeout. Displaying result regardless of completion."}</div>`; 
                 outputMsg.innerHTML += `<div class="outputText">//${"Run again if no new overlay shown."}</div>`; 
