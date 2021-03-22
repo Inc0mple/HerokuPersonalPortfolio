@@ -1,5 +1,5 @@
 // server.js
-// where your node app starts
+// where the node app starts
 //IMPROVABLE: USE ASYNC AWAIT INSTEAD OF "THEN" TO HANDLE PROMISES
 
 // init project

@@ -981,6 +981,7 @@
             ).length > 1;
           if (boardState[i].value != ".") {
             if (checkIfDuplicate) {
+              console.log("duplicate detected")
               return false
             }
           }
@@ -1074,11 +1075,21 @@
         if (!solution) {
           //document.getElementById("loader").style.display = "none";
           //document.getElementById("container").style.display = "flex"
+          console.log("!solution")
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("container").style.display = "flex";
+
+          //Stop timing and show performance
+          const t1 = performance.now();
           return (document.getElementById("error-msg").innerHTML = "<span style='color: red'>Error: Invalid initial input.</span>");
         }
         if (solution == "no solution") {
           //document.getElementById("loader").style.display = "none";
           //document.getElementById("container").style.display = "flex"
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("container").style.display = "flex";
+          //Stop timing and show performance
+          const t1 = performance.now();
           return (document.getElementById("error-msg").innerHTML = "<span style='color: red'>Error: No solution found.</span>");
         }
         console.log("Final boardState", solution);
