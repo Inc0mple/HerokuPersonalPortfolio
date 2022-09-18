@@ -38,12 +38,19 @@
       <div id="aboutDiv">
         <h1 id="aboutTitle" class="heroTitle">Welcome to my project site</h1>
         <p id="aboutDescription" class="heroText">
-          You are either a random friend or family member who had the misfortune
-          to be pestered for an opinion, or a recruiter who had the fortune to
-          be referred here for a look at my portfolio. Since you are already here anyway, might as well
-          take a look at my stuff. This site
-          showcases projects done thus far in my path towards achieving
-          proficiency in Technology and Design.
+          I am an Undergraduate from the Singapore University of Technology and Design (SUTD) pursuing a Computer Science degree in the Artificial Intelligence
+          and Data Analytics Track with a minor in Digital Humanities and Health Informatics. My interest in applied ML research has led me to participate in several healthcare-related AI/ML
+          projects through SUTD's Undergraduate Research Opportunity Programmes (UROP).
+        </p>
+        <br>
+        <br>
+        <p id="aboutDescription" class="heroText"> When I am not busy tackling data science challenges, I like to play the piano,
+          keep up to date on the latest internet pop-culture trends and watch interesting scientific and historical documentaries about topics that are completely out of my depth.
+        </p>
+        <br>
+        <br>
+        <p id="aboutDescription" class="heroText">This site showcases projects done
+          thus far in my path towards achieving proficiency in Technology and Design.
         </p>
       </div>
     </section>
@@ -61,34 +68,37 @@
             <a class="iconLink" href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5" target="_blank"><img class="skillsIcon" src="assets/html5.png"></img></a>
             <a class="iconLink" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img class="skillsIcon" src="assets/css3.png"></img></a>
             <a class="iconLink" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img class="skillsIcon" src="assets/javascript.png"></img></a>
+            <a class="iconLink" href="https://nextjs.org/" target="_blank"><img class="skillsIcon" src="assets/next.png"></img></a>
             <a class="iconLink" href="https://getbootstrap.com/" target="_blank"><img class="skillsIcon" src="assets/bootstrap.png"></img></a>
             <a class="iconLink" href="https://d3js.org/" target="_blank"><img class="skillsIcon" src="assets/d3.png"></img></a>
             <a class="iconLink" href="https://jquery.com/" target="_blank"><img class="skillsIcon" src="assets/jquery2.png"></img></a>
             <a class="iconLink" href="https://reactjs.org/" target="_blank"><img class="skillsIcon" src="assets/react.png"></img></a>
           </div>
           <p class="skillsDescription">
-            Most of my projects contain HTML, CSS and ES6 JavaScript and the
-            occasional jQuery. I have exposure to some popular front-end
-            frameworks like Bootstrap and React, though there is much room for
-            improvement with regards to their practical implementations. Dabbled
-            in D3 as well for data visualisation in JavaScript.
+            I have exposure to some popular front-end
+            frameworks like Bootstrap, React and Next. Utilised
+            in D3 and Streamlit for data visualisation in JavaScript and Python
+            respectively.
           </p>
         </div>
         <div class="skillsBox">
           <h2 class="skillsSubheading">Back-End</h2>
           <div class="skillsIconContainer">
             <a class="iconLink" href="https://www.python.org/" target="_blank"><img class="skillsIcon" src="assets/python.png"></img></a>
+            <a class="iconLink" href="https://streamlit.io/" target="_blank"><img class="skillsIcon" src="assets/streamlit.png"></img></a>
+            <a class="iconLink" href="https://cloud.google.com/" target="_blank"><img class="skillsIcon" src="assets/googlecloud.png"></img></a>
+            <a class="iconLink" href="https://en.wikipedia.org/wiki/SQL" target="_blank"><img class="skillsIcon" src="assets/sql.png"></img></a>
             <a class="iconLink" href="https://www.mongodb.com/" target="_blank"><img class="skillsIcon" src="assets/mongodb.png"></img></a>
             <a class="iconLink" href="https://www.heroku.com/" target="_blank"><img class="skillsIcon" src="assets/heroku.png"></img></a>
             <a class="iconLink" href="https://nodejs.org/en/about/" target="_blank"><img class="skillsIcon doubleSize" src="assets/nodejs.png"></img></a>
             <a class="iconLink" href="https://www.npmjs.com/get-npm" target="_blank"><img class="skillsIcon doubleSize" src="assets/npm.png"></img></a>
           </div>
           <p class="skillsDescription">
-            All my full-stack projects currently utilise NodeJS for server
+            Most full-stack projects utilise NodeJS for server
             routing and MongoDB for database storage, with Python being used for
-            AI-related projects. This website (as of November 2020) and all
-            full-stack projects are currently hosted on Heroku, a cloud platform
-            which I spent much of my time debugging when attempting deployment.
+            AI-related projects. This website (as of September 2022) and all
+            most full-stack projects are currently hosted on Heroku while others
+            are hosted on Google Cloud.
           </p>
         </div>
         <div class="skillsBox">
@@ -107,7 +117,7 @@
             As my preferred IDE, VS Code has been used for all projects done
             after my transition from Code Pen, during which I learnt the basics
             of Git and GitHub. I have used Microsoft Office software extensively
-            in the past, and recently started to pick up Adobe Creative Cloud
+            in the past, and have picked up on Adobe Creative Cloud
             Software to aid in design.
           </p>
         </div>
@@ -121,44 +131,95 @@
       <div id="portfolioContainer">
         <div id="filterDiv">
           <button id="showall" onclick="filterProjectBox('showall')" class="filterButton activeFilter">Show All</button>
-          <button id="frontend" onclick="filterProjectBox('frontend')" class="filterButton">Front-End</button>
-          <button id="fullstack" onclick="filterProjectBox('fullstack')" class="filterButton">Full-Stack</button>
-          <button id="javascript" onclick="filterProjectBox('javascript')" class="filterButton">Javascript</button>
-          <button id="react" onclick="filterProjectBox('react')" class="filterButton">React</button>
-          <button id="bootstrap" onclick="filterProjectBox('bootstrap')" class="filterButton">Bootstrap</button>
           <button id="python" onclick="filterProjectBox('python')" class="filterButton">Python</button>
-          <button id="mongodb" onclick="filterProjectBox('mongodb')" class="filterButton">MongoDb</button>
-          <button id="d3" onclick="filterProjectBox('d3')" class="filterButton">D3</button>
+          <button id="ai" onclick="filterProjectBox('ai')" class="filterButton">Artifical Intelligence</button>
+          <button id="cloud" onclick="filterProjectBox('cloud')" class="filterButton">Cloud</button>
+          <button id="nlp" onclick="filterProjectBox('nlp')" class="filterButton">Natural Language Processing</button>
+          <button id="cv" onclick="filterProjectBox('cv')" class="filterButton">Computer Vision</button>
+          <button id="research" onclick="filterProjectBox('research')" class="filterButton">Research</button>
+          <button id="javascript" onclick="filterProjectBox('javascript')" class="filterButton">JavaScript</button>
+          <button id="python" onclick="filterProjectBox('research')" class="filterButton">Research</button>
+          <button id="react" onclick="filterProjectBox('react')" class="filterButton">React</button>
+          <button id="mongodb" onclick="filterProjectBox('mongodb')" class="filterButton">MongoDB</button>
+          <button id="viz" onclick="filterProjectBox('viz')" class="filterButton">Data Visualisation</button>
         </div>
         <div id="projectGrid">
-          <div class="projectBox frontend">
-            <a class="projectLink" href="https://codepen.io/Incomple_/full/YzqybxE" target="_blank"><img class="projectImg" src="https://codepen.io/Incomple_/pen/YzqybxE/image/large.png"></img></a>
-            <h3 class="projectTitle">Tribute Page</h3>
-            <p class="projectText">The very first website I made, featuring a simple design. Marks the beginning of my web development learning journey.</p>
-            <a class="projectButtonLink" href="https://codepen.io/Incomple_/full/YzqybxE"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
+          <div class="projectBox research python viz">
+            <a class="projectLink" href="https://www.jacc.org/doi/abs/10.1016/S0735-1097(22)02980-1" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/abstract.png"></img></a>
+            <h3 class="projectTitle">Biomedical Data Analysis</h3>
+            <p class="projectText">Applied ML techniques on a biomedical dataset comprising 86 elderlies and co-authored an abstract which was accepted into ACC.22.</p>
+            <a class="projectButtonLink" href="https://www.jacc.org/doi/abs/10.1016/S0735-1097(22)02980-1"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
-          <div class="projectBox frontend">
-            <a class="projectLink" href="https://codepen.io/Incomple_/full/KKzVbeo" target="_blank"><img class="projectImg" src="https://codepen.io/Incomple_/pen/KKzVbeo/image/large.png"></img></a>
-            <h3 class="projectTitle">Survey Form</h3>
-            <p class="projectText">Project used for learning to create interactive elements. Currently non-functional, with plans for added functionality after learning PHP.</p>
-            <a class="projectButtonLink" href="https://codepen.io/Incomple_/full/KKzVbeo"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
+          <div class="projectBox backend ai python cloud nlp">
+            <a class="projectLink" href="https://github.com/Inc0mple/emo-tele-bot" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/linkedinArticleHeader2.png"></img></a>
+            <h3 class="projectTitle">EmotionBot (Telegram)</h3>
+            <p class="projectText">Telegram Bot that analyses a given text and returns the top 5 emotions evoked. Utilises HuggingFace inference API.</p>
+            <a class="projectButtonLink" href="https://github.com/Inc0mple/emo-tele-bot"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
-          <div class="projectBox frontend">
-            <a class="projectLink" href="https://codepen.io/Incomple_/full/bGppgbz" target="_blank"><img class="projectImg" src="https://codepen.io/Incomple_/pen/bGppgbz/image/large.png"></img></a>
-            <h3 class="projectTitle">Product Landing Page</h3>
-            <p class="projectText">My first mockup of a product landing site. Improvable.</p>
-            <a class="projectButtonLink" href="https://codepen.io/Incomple_/full/bGppgbz"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
+          <div class="projectBox streamlit ai python cv">
+            <a class="projectLink" href="https://github.com/Inc0mple/smarteye_app" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/healtheye.png"></img></a>
+            <h3 class="projectTitle">SmartEye/HealthEye</h3>
+            <p class="projectText">Streamlit webapp. Uses device's cameras to perform CV tasks such as fall detection, pose estimation and sign-language recognition.</p>
+            <a class="projectButtonLink" href="https://github.com/Inc0mple/smarteye_app"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
-          <div class="projectBox frontend">
-            <a class="projectLink" href="https://codepen.io/Incomple_/full/OJNNpgN" target="_blank"><img class="projectImg" src="https://codepen.io/Incomple_/pen/OJNNpgN/image/large.png"></img></a>
-            <h3 class="projectTitle">Technical Documentation</h3>
-            <p class="projectText">Text-heavy website incorporating responsive design (auto-adjusting elements, media queries etc.).</p>
-            <a class="projectButtonLink" href="https://codepen.io/Incomple_/full/OJNNpgN"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
+          <div class="projectBox research ai python cv viz">
+            <a class="projectLink" href="https://drive.google.com/file/d/15YRLKOt4eFRWA6BqfxGUsHDcGhZBP_Ti/view?usp=sharingN" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/Explainable_AI_Screencap.png"></img></a>
+            <h3 class="projectTitle">Explainable AI</h3>
+            <p class="projectText">Exploration of Explainable AI (XAI) techniques including LIME, SHAP and LRP. Featured in SUTD Learning Celebration Carnival 2022.</p>
+            <a class="projectButtonLink" href="https://drive.google.com/file/d/15YRLKOt4eFRWA6BqfxGUsHDcGhZBP_Ti/view?usp=sharingN"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
+          </div>
+          <div class="projectBox research ai python cv viz">
+            <a class="projectLink" href="https://www.linkedin.com/in/incomple/overlay/1635486106043/single-media-viewer/" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/Urban%20Analytics.jpg"></img></a>
+            <h3 class="projectTitle">Urban AI Analytics</h3>
+            <p class="projectText">Extracted useful metrics from unlabeled video datasets using Pandas, Seaborn, YOLOv5 and DeepLabV3.</p>
+            <a class="projectButtonLink" href="https://www.linkedin.com/in/incomple/overlay/1635486106043/single-media-viewer/"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
+          </div>
+          <div class="projectBox hardware ai python cv">
+            <a class="projectLink" href="https://drive.google.com/file/d/1JGCuGIx05fgDsGYyrR-0iSYMJmlcZSuV/view?usp=sharing" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/dti.png"></img></a>
+            <h3 class="projectTitle">Helios: CV with RPi 3 </h3>
+            <p class="projectText">Tech Lead for project utilising RPi 3 and CV to count people and perform social distancing using a novel light fixture.</p>
+            <a class="projectButtonLink" href="https://drive.google.com/file/d/1JGCuGIx05fgDsGYyrR-0iSYMJmlcZSuV/view?usp=sharing"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
+          </div>
+          <div class="projectBox frontend javascript react">
+            <a class="projectLink" href="https://www.linkedin.com/posts/ivanfengjk_sage-sharing-and-gaining-experiences-activity-6968778969626152960-ZVFu?utm_source=share&utm_medium=member_desktop" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/SageWeb.png"></img></a>
+            <h3 class="projectTitle">SAGE Web</h3>
+            <p class="projectText">Developed Feed page and performed testing for SAGE Experiences, an online knowledge-sharing platform built using the MERN stack.</p>
+            <a class="projectButtonLink" href="https://www.linkedin.com/posts/ivanfengjk_sage-sharing-and-gaining-experiences-activity-6968778969626152960-ZVFu?utm_source=share&utm_medium=member_desktop"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
+          </div>
+          <div class="projectBox fullstack javascript python">
+            <a class="projectLink" href="/keypoints" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/keypointsBackground2.png"></img></a>
+            <h3 class="projectTitle">ML Pose Estimation</h3>
+            <p class="projectText">Uses a trained Neutral Network to visualise and estimate the pose of humans. Works best with full-body images of a few people.</p>
+            <a class="projectButtonLink" href="/keypoints"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
+          </div>
+          <div class="projectBox python">
+            <a class="projectLink" href="https://github.com/Inc0mple/DungeonCrawler1DProject" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/dungeonCrawlBackground.png"></img></a>
+            <h3 class="projectTitle">Dungeon Crawler</h3>
+            <p class="projectText">Text-based Dungeon Crawler game made with Python 3. Hosted on repl.it. Try to find the key and escape the Dungeon.</p>
+            <a class="projectButtonLink" href="https://repl.it/@BryanTan3/DungeonCrawler1DProject"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
+          </div>
+          <div class="projectBox backend ai python cloud">
+            <a class="projectLink" href="https://github.com/Inc0mple/emo-tele-bot" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/linkedinArticleHeader2.png"></img></a>
+            <h3 class="projectTitle">MockingBot (Telegram)</h3>
+            <p class="projectText">Telegram Bot that transforms a user's input text.</p>
+            <a class="projectButtonLink" href="https://github.com/Inc0mple/emo-tele-bot"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
+          </div>
+          <div class="projectBox python javascript nlp ai">
+            <a class="projectLink" href="https://github.com/Inc0mple/GoogleNewsSentimentFlask" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/WebappScreenshot.JPG"></img></a>
+            <h3 class="projectTitle">GoogleNews Sentiment Analysis</h3>
+            <p class="projectText">A work-in-progress data analysis project to analyse and compare news sentiment trends. Currently must be forked and ran locally.</p>
+            <a class="projectButtonLink" href="https://github.com/Inc0mple/GoogleNewsSentimentFlask"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
+          </div>
+          <div class="projectBox fullstack javascript mongodb">
+            <a class="projectLink" href="/exercise" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/exerciseTrackerBackground.png"></img></a>
+            <h3 class="projectTitle">Exercise Tracker Demo</h3>
+            <p class="projectText">A simple CRUD (Create, Read, Update, Delete) web app demo, using MongoDB.</p>
+            <a class="projectButtonLink" href="/exercise"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
           <div class="projectBox frontend javascript">
             <a class="projectLink" href="https://codepen.io/Incomple_/full/xxVPNqN" target="_blank"><img class="projectImg" src="https://codepen.io/Incomple_/pen/xxVPNqN/image/large.png"></img></a>
             <h3 class="projectTitle">Random Quote Generator</h3>
-            <p class="projectText">My first website incorporating Javascript. Generates a random quote and changes background on click.</p>
+            <p class="projectText">Generates a random quote and changes background on click.</p>
             <a class="projectButtonLink" href="https://codepen.io/Incomple_/full/xxVPNqN"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
           <div class="projectBox frontend javascript ">
@@ -173,7 +234,7 @@
             <p class="projectText">Automatically converts text inputs into Markdown format.</p>
             <a class="projectButtonLink" href="https://codepen.io/Incomple_/full/MWyrpZv"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
-          <div class="projectBox frontend javascript bootstrap">
+          <div class="projectBox frontend javascript">
             <a class="projectLink" href="https://codepen.io/Incomple_/full/abNqROG" target="_blank"><img class="projectImg" src="https://codepen.io/Incomple_/pen/abNqROG/image/large.png"></img></a>
             <h3 class="projectTitle">Javascript Calculator</h3>
             <p class="projectText">Simple calculator made using bootstrap buttons and featuring keyboard shortcuts.</p>
@@ -185,31 +246,31 @@
             <p class="projectText">A simple implementation of the React framework. Keeps track of your work/break time and beeps on each interval.</p>
             <a class="projectButtonLink" href="https://codepen.io/Incomple_/full/QWNmxvE"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
-          <div class="projectBox frontend javascript d3">
+          <div class="projectBox frontend javascript viz">
             <a class="projectLink" href="https://codepen.io/Incomple_/full/zYqjgbB" target="_blank"><img class="projectImg" src="https://codepen.io/Incomple_/pen/zYqjgbB/image/large.png"></img></a>
             <h3 class="projectTitle">D3 Bar Chart</h3>
             <p class="projectText">Data visualisation project. Plots the United State's Gross Domestic Product from 1947 - 2015.</p>
             <a class="projectButtonLink" href="https://codepen.io/Incomple_/full/zYqjgbB"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
-          <div class="projectBox frontend javascript d3">
+          <div class="projectBox frontend javascript viz">
             <a class="projectLink" href="https://codepen.io/Incomple_/full/KKzELag" target="_blank"><img class="projectImg" src="https://codepen.io/Incomple_/pen/KKzELag/image/large.png"></img></a>
             <h3 class="projectTitle">D3 Scatterplot</h3>
             <p class="projectText">Data visualisation project. Highlights cyclists with doping allegations between 1994 - 2015.</p>
             <a class="projectButtonLink" href="https://codepen.io/Incomple_/full/KKzELag"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
-          <div class="projectBox frontend javascript d3">
+          <div class="projectBox frontend javascript viz">
             <a class="projectLink" href="https://codepen.io/Incomple_/full/zYqQWvW" target="_blank"><img class="projectImg" src="https://codepen.io/Incomple_/pen/zYqQWvW/image/large.png"></img></a>
             <h3 class="projectTitle">D3 Heat Map</h3>
             <p class="projectText">Data visualisation project. Visualises the global land-surface temperature by month from 1753 - 2015 through colored tiles.</p>
             <a class="projectButtonLink" href="https://codepen.io/Incomple_/full/zYqQWvW"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
-          <div class="projectBox frontend javascript d3">
+          <div class="projectBox frontend javascript viz">
             <a class="projectLink" href="https://codepen.io/Incomple_/full/QWELJZj" target="_blank"><img class="projectImg" src="https://codepen.io/Incomple_/pen/QWELJZj/image/large.png"></img></a>
             <h3 class="projectTitle">D3 Choropleth Map</h3>
             <p class="projectText">Data visualisation project. Shows the level of degree attainment for different counties in the US through graduated color shades.</p>
             <a class="projectButtonLink" href="https://codepen.io/Incomple_/full/QWELJZj"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
-          <div class="projectBox frontend javascript d3">
+          <div class="projectBox frontend javascript viz">
             <a class="projectLink" href="https://codepen.io/Incomple_/full/abZbwxV" target="_blank"><img class="projectImg" src="https://codepen.io/Incomple_/pen/abZbwxV/image/large.png"></img></a>
             <h3 class="projectTitle">D3 Treemap Diagram</h3>
             <p class="projectText">Data visualisation project. Visualises the amount of money raised for different Kickstarter projects in different categories.</p>
@@ -226,30 +287,6 @@
             <h3 class="projectTitle">Various Microservices</h3>
             <p class="projectText">Shows various microservices I developed while learning back-end web technologies, from URL shortening to file uploading.</p>
             <a class="projectButtonLink" href="/microservices"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
-          </div>
-          <div class="projectBox fullstack javascript mongodb">
-            <a class="projectLink" href="/exercise" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/exerciseTrackerBackground.png"></img></a>
-            <h3 class="projectTitle">Exercise Tracker Demo</h3>
-            <p class="projectText">A simple CRUD (Create, Read, Update, Delete) web app demo, using MongoDB.</p>
-            <a class="projectButtonLink" href="/exercise"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
-          </div>
-          <div class="projectBox fullstack javascript python">
-            <a class="projectLink" href="/keypoints" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/keypointsBackground2.png"></img></a>
-            <h3 class="projectTitle">ML Pose Estimation</h3>
-            <p class="projectText">Uses a trained Neutral Network to visualise and estimate the pose of humans. Works best with full-body images of a few people.</p>
-            <a class="projectButtonLink" href="/keypoints"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
-          </div>
-          <div class="projectBox python">
-            <a class="projectLink" href="https://github.com/Inc0mple/DungeonCrawler1DProject" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/dungeonCrawlBackground.png"></img></a>
-            <h3 class="projectTitle">Dungeon Crawler</h3>
-            <p class="projectText">Text-based Dungeon Crawler game made with Python 3. Hosted on repl.it. Try to find the key and escape the Dungeon.</p>
-            <a class="projectButtonLink" href="https://repl.it/@BryanTan3/DungeonCrawler1DProject"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
-          </div>
-          <div class="projectBox python fullstack javascript">
-            <a class="projectLink" href="https://github.com/Inc0mple/GoogleNewsSentimentFlask" target="_blank"><img class="projectImg" src="https://raw.githubusercontent.com/Inc0mple/Logos/master/WebappScreenshot.JPG"></img></a>
-            <h3 class="projectTitle">GoogleNews Sentiment Analysis</h3>
-            <p class="projectText">A work-in-progress data analysis project to analyse and compare news sentiment trends. Currently must be forked and ran locally.</p>
-            <a class="projectButtonLink" href="https://github.com/Inc0mple/GoogleNewsSentimentFlask"><button class="projectButton"><p class="buttonText">More</p><img class="rightArrowIcon" src="assets/rightArrow.png"></img></button></a>
           </div>
         </div>
       </div>
