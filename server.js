@@ -15,7 +15,7 @@ const exercise = require("./api/exercise");
 const sudoku = require("./api/sudoku");
 const library = require("./api/library");
 const converter = require("./api/convertHandler");
-const keypoints = require("./api/keypoints");
+// const keypoints = require("./api/keypoints");
 
 /*
 const americanToBritishSpelling = require("./translations/american-to-british-spelling")
@@ -139,11 +139,11 @@ app.delete("/api/books/:id", library);
 app.get("/api/convert", converter);
 
 //**********Start of Keypoints**********
-app.get("/keypoints", keypoints);
-app.post("/keypoints/upload", keypoints);
-app.get("/keypoints/upload/rawImage.png", keypoints);
-app.get("/keypoints/upload/processedImage.png", keypoints);
-app.get("/keypoints/process", keypoints);
+// app.get("/keypoints", keypoints);
+// app.post("/keypoints/upload", keypoints);
+// app.get("/keypoints/upload/rawImage.png", keypoints);
+// app.get("/keypoints/upload/processedImage.png", keypoints);
+// app.get("/keypoints/process", keypoints);
 
 
 // listen for requests :)

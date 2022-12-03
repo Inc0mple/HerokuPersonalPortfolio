@@ -1,11 +1,11 @@
--f https://download.pytorch.org/whl/torch_stable.html
-ffmpeg-python==0.2.0
-matplotlib==3.0.2
-munkres==1.1.2
-numpy==1.16.0
-opencv-python==3.4.0.14
-Pillow==5.4
-vidgear==0.1.4
-torch==1.2.0+cpu
-torchvision==0.4.0+cpu
-tqdm==4.26
+# -f https://download.pytorch.org/whl/torch_stable.html
+# ffmpeg-python==0.2.0
+# matplotlib==3.0.2
+# munkres==1.1.2
+# numpy==1.16.0
+# opencv-python==3.4.0.14
+# Pillow==5.4
+# vidgear==0.1.4
+# torch==1.2.0+cpu
+# torchvision==0.4.0+cpu
+# tqdm==4.26
