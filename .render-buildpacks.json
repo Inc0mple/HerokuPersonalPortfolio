@@ -1,8 +1,6 @@
 {
   "buildpacks": [
     "https://github.com/heroku/heroku-buildpack-apt.git",
-    "heroku/python",
-    "heroku/nodejs",
-    "https://github.com/raxod502/heroku-buildpack-git-lfs"
+    "heroku/nodejs"
   ]
 }
